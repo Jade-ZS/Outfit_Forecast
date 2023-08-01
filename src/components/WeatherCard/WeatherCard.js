@@ -5,7 +5,7 @@ export default function WeatherCard({result}) {
     <div className='weather-card'>
       {console.log('weathercard result: ', result)}
       {result &&
-      <>
+      <div className='city'>
         <div className='city-name'>
           {/* <span>{JSON.stringify(result)}</span> */}
           <span>{result.name}</span>
@@ -19,8 +19,7 @@ export default function WeatherCard({result}) {
           <img className='city-icon' src={`https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`} alt={result.weather[0].description}></img>
           <p>{result.weather[0].description}</p>
         </div>
-
-      </>}
+      </div>}
     </div>
   )
 }
