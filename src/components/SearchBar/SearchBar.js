@@ -16,11 +16,9 @@ export default function SearchBar() {
   }
 
   const getWeather = async geocode => {
-    return geocode.then(async response => {
-      const { lat, lng } = response;
+      const { lat, lng } = geocode;
       const weather = await fetchWeather(lat, lng);
       return weather;
-    });
   }
 
   const handleSubmit = async () => {
@@ -31,6 +29,7 @@ export default function SearchBar() {
       const weather = await getWeather(geocode)
       setResult({status: 'suceeded', content: weather})
     }
+    console.log(result)
     return result.content;
   }
 
