@@ -1,5 +1,5 @@
 const fetchWeather = (lat, lon) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f51a6bd94c6039cb545b8907194c688d`)
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=f51a6bd94c6039cb545b8907194c688d`)
   .then(response => {
     if(!response.ok) {
       throw new Error('failed to get weather data');

@@ -19,6 +19,7 @@ export default function SearchBar({addWeather, checkAddress}) {
       return 'invalid address!!!';
     } 
     checkAddress(true);
+    console.log('getgeocode obj: ', geocode)
     return geocode.results[0].geometry.location;
   }
 
