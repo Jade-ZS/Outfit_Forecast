@@ -20,6 +20,7 @@ export default function WeatherCard({result}) {
           <p>{result.weather[0].description}</p>
         </div>
       </div>}
+      <img className='cloth-img' src={require('../../assets/autum-sweaters.JPG')} alt='sweaters'/>
     </div>
   )
 }
