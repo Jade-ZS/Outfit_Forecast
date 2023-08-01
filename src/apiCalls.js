@@ -11,17 +11,16 @@ const getWeather = (lat, lon) => {
   .catch(error => console.log(error));
 };
 
-const getGeocode = (zipcode) => {
-  let queryString;
-  return fetch(`http://api.openweathermap.org/geo/1.0/${queryString}${zipcode}&appid=f51a6bd94c6039cb545b8907194c688d`)
+const getGeocode = address => {
+  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA7kBhFcd_kLf6QbyvhE1NQmcLb_knMNYQ `)
   .then(response => {
     if(!response.ok) {
       throw new Error('Failed to get geocode');
     }
     return response.json();
   })
-  .catch(error => console.log(error));
-};
+  // .catch(error => console.log(error));
+}
 
 const getIcon = iconCode => {
   return fetch(`https://openweathermap.org/img/wn/${iconCode}@2x.png`)
@@ -42,3 +41,5 @@ export {
   getIcon,
   // apiCalls
 }
+
+// export default getGeocode
