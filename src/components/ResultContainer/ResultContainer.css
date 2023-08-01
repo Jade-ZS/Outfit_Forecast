@@ -1,0 +1,11 @@
+.result-container {
+  background: rgba(255, 192, 203, 0.59);
+  height: 70vh;
+  width: 70vw;
+  border-radius: 20px;
+}
+
+.button-bar {
+  display: flex;
+  justify-content: space-around;
+}
