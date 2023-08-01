@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.22.5",
     "cypress": "^12.17.2"
   }
 }
