@@ -10,7 +10,7 @@ export default function SearchBar() {
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
-      return 'invalid address!'
+      return 'invalid address!!!'
     } 
     return geocode.results[0].geometry.location;
   }
@@ -26,10 +26,12 @@ export default function SearchBar() {
   const handleSubmit = async () => {
     const geocode = await getGeocode(keyword);
     if (typeof geocode === 'string') {
-      return geocode;
+      setResult({status: 'failed', content: geocode})
+    } else {
+      const weather = await getWeather(geocode)
+      setResult({status: 'suceeded', content: weather})
     }
-    const weather = await getWeather(geocode)
-    return weather;
+    return result.content;
   }
 
   return(
