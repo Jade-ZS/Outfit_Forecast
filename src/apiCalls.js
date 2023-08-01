@@ -19,6 +19,7 @@ const getGeocode = address => {
     }
     return response.json();
   })
+  // .catch(err => {throw new Error('catch error')})
   // .catch(error => console.log(error));
 }
 

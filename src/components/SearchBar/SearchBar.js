@@ -5,8 +5,13 @@ import { getGeocode } from '../../apiCalls';
 export default function SearchBar() {
 
   const [keyword, setKeyword] = useState('');
-  const handleSubmit = () => {
-    getGeocode(keyword).then(res => console.log('res: ', res))
+  const handleSubmit = async () => {
+    const geocode = await getGeocode(keyword)
+    console.log('geocode: ', geocode.results[0].geometry.location)
+    if(!geocode.results.length) {
+      return 'invalid address!'
+    } 
+    return geocode.results[0].geometry.location;
   }
 
   return(
