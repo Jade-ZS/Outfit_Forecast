@@ -64,6 +64,7 @@ export default function SearchBar({addWeather, checkAddress}) {
 
   return(
     <div className='search-bar'>
+      <span>view saved ---</span>
       <input required className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
       <input type='submit' value='submit' onClick={handleSubmit}/>
     </div>
