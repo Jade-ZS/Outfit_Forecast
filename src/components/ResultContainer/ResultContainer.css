@@ -4,3 +4,8 @@
   width: 70vw;
   border-radius: 20px;
 }
+
+.button-bar {
+  display: flex;
+  justify-content: space-around;
+}
