@@ -1,6 +1,7 @@
 import './SearchBar.css';
 import { useState } from 'react';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
+import { Link } from 'react-router-dom';
 
 export default function SearchBar({addWeather, checkAddress}) {
 
@@ -64,7 +65,7 @@ export default function SearchBar({addWeather, checkAddress}) {
 
   return(
     <div className='search-bar'>
-      <span>view saved ---</span>
+      <Link to='/saved'><span>view saved ---</span></Link>
       <input required className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
       <input type='submit' value='submit' onClick={handleSubmit}/>
     </div>

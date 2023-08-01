@@ -11,7 +11,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route path='/saved' element={<Saves /> }/> */}
+        <Route path='/saved' element={<Saves /> } />
           {/* <Route path=':id' element={<SingleView />} /> */}
         {/* <Route path='*' element={<NotFound />} /> */}
       </Routes>
