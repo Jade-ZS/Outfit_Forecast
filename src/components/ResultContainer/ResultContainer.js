@@ -8,8 +8,10 @@ export default function ResultContainer({isValid, result}) {
       <div className='button-bar'>
         <p>toggle</p>
         <div>
-          <span>edit--</span>
-          <span>save--</span>
+          {/* <span>edit--</span> */}
+          <img className='edit-button' src='https://img.icons8.com/?size=512&id=95154&format=png'/>
+          {/* <span>save--</span> */}
+          <img className='save-button' src='https://img.icons8.com/?size=512&id=82461&format=png'/>
         </div>
       </div>
       {isValid ? <WeatherCard result={result}/> : <p>Invalid Address!!!</p>}

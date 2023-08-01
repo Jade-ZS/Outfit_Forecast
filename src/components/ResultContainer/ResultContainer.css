@@ -9,3 +9,16 @@
   display: flex;
   justify-content: space-around;
 }
+
+.edit-button, 
+.save-button {
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background: white;
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background: green;
+}
