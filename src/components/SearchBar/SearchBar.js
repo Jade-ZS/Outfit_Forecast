@@ -2,16 +2,18 @@ import './SearchBar.css';
 import { useState } from 'react';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 
-export default function SearchBar() {
+export default function SearchBar({addWeather, checkAddress}) {
 
   const [keyword, setKeyword] = useState('');
-  const [result, setResult] = useState('');
+  const [weatherResult, setWeatherResult] = useState('');
 
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
-      return 'invalid address!!!'
+      checkAddress(false);
+      return 'invalid address!!!';
     } 
+    checkAddress(true);
     return geocode.results[0].geometry.location;
   }
 
@@ -23,13 +25,12 @@ export default function SearchBar() {
 
   const handleSubmit = async () => {
     const geocode = await getGeocode(keyword);
-    if (typeof geocode === 'string') {
-      setResult({status: 'failed', content: geocode})
-    } else {
+    if (typeof geocode !== 'string') {
       const weather = await getWeather(geocode)
-      setResult({status: 'suceeded', content: weather})
+      setWeatherResult(weather);
+      addWeather()
+      return weatherResult;
     }
-    return result.content;
   }
 
   const handleChange = e => {
