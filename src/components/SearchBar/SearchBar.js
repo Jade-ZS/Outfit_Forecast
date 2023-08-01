@@ -1,6 +1,6 @@
 import './SearchBar.css';
 import { useState } from 'react';
-import { fetchGeocode } from '../../apiCalls';
+import { fetchGeocode, fetchWeather } from '../../apiCalls';
 
 export default function SearchBar() {
 
@@ -9,17 +9,25 @@ export default function SearchBar() {
 
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
-    console.log('geocode: ', geocode.results[0].geometry.location)
     if(!geocode.results.length) {
       return 'invalid address!'
     } 
     return geocode.results[0].geometry.location;
   }
 
-  const 
+  const getWeather = async geocode => {
+    return geocode.then(async response => {
+      const { lat, lng } = response;
+      const weather = await fetchWeather(lat, lng);
+      return weather;
+    });
+  }
 
   const handleSubmit = async () => {
     const geocode = getGeocode(keyword);
+    const weather = await getWeather(geocode)
+    console.log(weather)
+
 
   }
 
