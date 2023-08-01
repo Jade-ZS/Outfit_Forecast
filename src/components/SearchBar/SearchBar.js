@@ -7,6 +7,10 @@ export default function SearchBar({addWeather, checkAddress}) {
   const [keyword, setKeyword] = useState('');
   const [weatherResult, setWeatherResult] = useState('');
 
+  const clearForm = () => {
+    setKeyword('');
+  }
+
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     console.log('get geocode: ', geocode)
@@ -27,9 +31,15 @@ export default function SearchBar({addWeather, checkAddress}) {
   }
 
   const handleSubmit = async () => {
+    if(!keyword.length) {
+      alert('this field is required');
+      return;
+    }
+
     const geocode = await getGeocode(keyword);
     console.log('handle submit geocode: ', geocode)
     if (typeof geocode !== 'string') {
+      clearForm();
       console.log('valid geocode')
       const weather = await getWeather(geocode)
       setWeatherResult(weather);
@@ -41,17 +51,19 @@ export default function SearchBar({addWeather, checkAddress}) {
 
   const handleChange = e => {
     setKeyword(e.target.value);
+  }
 
-    // TO DO
-    console.log('keycode: ', e.keycode)
-    if (e.keycode === 13) {
+  const handleKeyDown = e => {
+    console.log('keycode: ', e.code)
+    if (e.code === 'Enter') {
+      console.log('here keycode')
       handleSubmit();
     }
   }
 
   return(
     <div className='search-bar'>
-      <input className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} />
+      <input required className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
       <input type='submit' value='submit' onClick={handleSubmit}/>
     </div>
   )
