@@ -1,4 +1,5 @@
 import './SearchBar.css';
+import { getWeather, getGeocode, getIcon } from '../../apiCalls';
 
 export default function SearchBar() {
   return(

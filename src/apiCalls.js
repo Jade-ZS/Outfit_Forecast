@@ -1,3 +1,5 @@
+// class apicalls {
+
 const getWeather = (lat, lon) => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f51a6bd94c6039cb545b8907194c688d`)
   .then(response => {
@@ -9,14 +11,8 @@ const getWeather = (lat, lon) => {
   .catch(error => console.log(error));
 };
 
-const getGeocode = (value) => {
+const getGeocode = (zipcode) => {
   let queryString;
-  if (typeof parseInt(value) === number) {
-    queryString = 'zip?zip=';
-  } else {
-    queryString = 'direct?q=';
-  }
-
   return fetch(`http://api.openweathermap.org/geo/1.0/${queryString}${zipcode}&appid=f51a6bd94c6039cb545b8907194c688d`)
   .then(response => {
     if(!response.ok) {
@@ -38,8 +34,11 @@ const getIcon = iconCode => {
   .catch(error => console.log(error));
 };
 
+// }
+
 export {
   getWeather, 
   getGeocode,
   getIcon,
+  // apiCalls
 }

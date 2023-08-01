@@ -7,15 +7,15 @@ import SingleView from '../SingleView/SingleView';
 
 function App() {
   
-
-
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/saved' element={<Saves /> }/>
-        <Route path='/:id' element={<SingleView />} />
-      <Route path='*' element={<NotFound />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        {/* <Route path='/saved' element={<Saves /> }/> */}
+          {/* <Route path=':id' element={<SingleView />} /> */}
+        {/* <Route path='*' element={<NotFound />} /> */}
+      </Routes>
+    </div>
   );
 }
 
