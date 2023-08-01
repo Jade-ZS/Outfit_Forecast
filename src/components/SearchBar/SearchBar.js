@@ -32,9 +32,16 @@ export default function SearchBar() {
     return result.content;
   }
 
+  const handleChange = e => {
+    setKeyword(e.target.value);
+    if (e.keycode === 13) {
+      handleSubmit();
+    }
+  }
+
   return(
     <div className='search-bar'>
-      <input className='search-input' placeholder='search by city, address or zipcode' onChange={e => setKeyword(e.target.value)} value={keyword}/>
+      <input className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} />
       <input type='submit' value='submit' onClick={handleSubmit}/>
     </div>
   )
