@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 export default function Home() {
   const [isValid, setIsValid] = useState(true);
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState();
 
   const addWeather = weather => {
-    setResult({...result, weather: weather});
+    setResult(weather);
   }
 
   const checkAddress = value => {
@@ -17,8 +17,9 @@ export default function Home() {
 
   return(
     <div className='home-page'>
+       {console.log('home result: ', result)}
       <SearchBar addWeather={addWeather} checkAddress={checkAddress}/>
-      <ResultContainer isValid={isValid} />
+      <ResultContainer isValid={isValid} result={result}/>
     </div>
   );
 }
