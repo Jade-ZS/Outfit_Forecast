@@ -24,11 +24,12 @@ export default function SearchBar() {
   }
 
   const handleSubmit = async () => {
-    const geocode = getGeocode(keyword);
+    const geocode = await getGeocode(keyword);
+    if (typeof geocode === 'string') {
+      return geocode;
+    }
     const weather = await getWeather(geocode)
-    console.log(weather)
-
-
+    return weather;
   }
 
   return(
