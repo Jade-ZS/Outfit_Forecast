@@ -29,7 +29,6 @@ export default function SearchBar() {
       const weather = await getWeather(geocode)
       setResult({status: 'suceeded', content: weather})
     }
-    console.log(result)
     return result.content;
   }
 

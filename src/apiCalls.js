@@ -1,5 +1,3 @@
-// class apicalls {
-
 const fetchWeather = (lat, lon) => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f51a6bd94c6039cb545b8907194c688d`)
   .then(response => {
@@ -20,7 +18,6 @@ const fetchGeocode = address => {
     return response.json();
   })
   // .catch(err => {throw new Error('catch error')})
-  // .catch(error => console.log(error));
 }
 
 const fetchIcon = iconCode => {
@@ -34,13 +31,8 @@ const fetchIcon = iconCode => {
   .catch(error => console.log(error));
 };
 
-// }
-
 export {
   fetchWeather, 
   fetchGeocode,
   fetchIcon,
-  // apiCalls
 }
-
-// export default getGeocode
