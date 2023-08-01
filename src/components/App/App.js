@@ -6,6 +6,9 @@ import Saves from '../Saves/Saves';
 import SingleView from '../SingleView/SingleView';
 
 function App() {
+  
+
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />
