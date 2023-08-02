@@ -17,7 +17,6 @@ export default function Home({saveLocation}) {
 
   return(
     <div className='home-page'>
-       {console.log('home result: ', result)}
       <SearchBar addWeather={addWeather} checkAddress={checkAddress}/>
       <ResultContainer isValid={isValid} result={result} saveLocation={saveLocation}/>
     </div>

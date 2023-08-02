@@ -8,23 +8,16 @@ import './SingleView.css';
 
 export default function SingleView() {
   const {id} = useParams();
-  // console.log(id)
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
-
-  console.log('saves', saves)
   const selectedCard = saves.filter(element => element.id === id)[0]
-  // console.log('selectedCard: ', selectedCard)
  
-  // console.log('lon lat' , lon, lat)
-
   useEffect(() => {
     if (selectedCard) {
       const { lon, lat } = selectedCard;
       fetchWeather(lat, lon)
       .then(res => setWeather(res))
     }
-  
   }, [])
 
   return (

@@ -11,7 +11,6 @@ export default function Result({result}) {
   useEffect(() => {
     const checkIfSaved = () => {
       const output = saves.some(element => JSON.stringify(element) === JSON.stringify(location));
-      // console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
       return output;
     }
 
@@ -25,7 +24,6 @@ export default function Result({result}) {
     } else {
       addSave(location);
     }
-    // console.log('onclick saves: ', saves)
   }
 
   return (

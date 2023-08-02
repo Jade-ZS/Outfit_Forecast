@@ -19,7 +19,6 @@ const fetchGeocode = address => {
     }
     return response.json();
   })
-  // .catch(err => {throw new Error('catch error')})
 }
 
 const fetchIcon = iconCode => {

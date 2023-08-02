@@ -1,6 +1,5 @@
 .city {
   width: 30vw;
-  /* grid-area: 1 / 1 / 2 / 2; */
   display: flex;
   flex-direction: column;
   justify-content: center;
