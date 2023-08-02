@@ -56,9 +56,9 @@ export default function SearchBar({addWeather, checkAddress}) {
   }
 
   const handleKeyDown = e => {
-    console.log('keycode: ', e.code)
+    // console.log('keycode: ', e.code)
     if (e.code === 'Enter') {
-      console.log('here keycode')
+      // console.log('here keycode')
       handleSubmit();
     }
   }
