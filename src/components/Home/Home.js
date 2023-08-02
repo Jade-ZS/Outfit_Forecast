@@ -11,19 +11,31 @@ export default function Home() {
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
   const [close, setClose] = useState(true);
+  const [message, setMessage] = useState('');
 
   const addWeather = weather => setResult(weather);
   const checkAddress = value => setIsValid(value);
   const handleClose = () => setClose(true);
   const clearForm = () => setKeyword('');
+
+  useEffect(() => {
+    // setMessage('');
+    if(!isValid && ifSubmit) {
+      setClose(false);
+    } 
+    setIfSubmit(false);
+  }, [keyword, ifSubmit, isValid])
   
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
       checkAddress(false);
+      setIsValid(false);
+      setMessage('invalid address!!!!!');
       return 'invalid address!!!';
     } 
     checkAddress(true);
+    setClose(true);
     return geocode.results[0].geometry.location;
   }
 
@@ -36,7 +48,9 @@ export default function Home() {
   const handleSubmit = async () => {
     setIfSubmit(true);
     if(!keyword.length) {
-      alert('this field is required');
+      // alert('this field is required');
+      setIsValid(false);
+      setMessage('this field is required');
       return;
     }
     const geocode = await getGeocode(keyword);
@@ -50,17 +64,10 @@ export default function Home() {
 
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
-    if (e.code === 'Enter') {
+    if (e.code === 'Enter' && !ifSubmit) {
       handleSubmit();
     }
   }
-
-  useEffect(() => {
-    if(!isValid && ifSubmit) {
-      setClose(false);
-    }
-    setIfSubmit(false);
-  }, [keyword, ifSubmit, isValid])
 
   return(
     <div className='home-page'>
@@ -70,7 +77,7 @@ export default function Home() {
         <input disabled={!close} type='submit' value='submit' onClick={handleSubmit}/>
       </div>
       <div className='result-container'>
-        {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={'invalid address'}/>}
+        {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
       </div>
     </div>
   );
