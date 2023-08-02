@@ -1,11 +1,9 @@
 import './Result.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
-import ButtonBar from '../ButtonBar/ButtonBar';
 import { SaveContext } from '../../SaveContext';
 import { useState, useContext } from 'react';
 
 export default function Result({result}) {
-  // const [isClicked, setIsClicked] = useState({saveClicked: false, editClicked: false})
   const [saveClicked, setSaveClicked] = useState(false);
   const { addSave, deleteSave } = useContext(SaveContext);
   const toggleClick = (action) => {
