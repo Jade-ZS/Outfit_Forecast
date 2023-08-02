@@ -4,13 +4,9 @@ import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 
 export default function SearchBar({addWeather, checkAddress}) {
-
   const [keyword, setKeyword] = useState('');
   const [weatherResult, setWeatherResult] = useState('');
-
-  const clearForm = () => {
-    setKeyword('');
-  }
+  const clearForm = () => setKeyword('');
 
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
