@@ -20,7 +20,7 @@ export default function ButtonBar({result, toggleCelsius, saveClicked, editClick
             alt='edit button'
             onClick={() => toggleClick('editClicked')}/>
           <img 
-            className={`save-button ${saveClicked && 'clicked'}`} 
+            className={`save-button ${saveClicked || isSaved && 'clicked'}`} 
             src='https://img.icons8.com/?size=512&id=82461&format=png'
             alt='save button'
             onClick={() => toggleClick('saveClicked')}/>
