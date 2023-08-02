@@ -7,19 +7,11 @@ import { useState, useContext } from 'react';
 export default function Result({result}) {
   // const [isClicked, setIsClicked] = useState({saveClicked: false, editClicked: false})
   const [saveClicked, setSaveClicked] = useState(false);
-  const [editClicked, setEditClicked] = useState(false);
-  const [toggleCelsius, setToggleCelsius] = useState(true);
   const { addSave, deleteSave } = useContext(SaveContext);
   const toggleClick = (action) => {
     if(action === 'saveClicked') {
       setSaveClicked(!saveClicked);
       saveClicked ? addSave(result) : deleteSave(result);
-    }
-    if(action === 'editClicked') {
-      setEditClicked(!editClicked);
-    }
-    if(action === 'toggleCelsius') {
-      setToggleCelsius(!toggleCelsius);
     }
   }
 
@@ -27,7 +19,12 @@ export default function Result({result}) {
     <div>
       {result && 
       <>
-        <ButtonBar result={result} saveClicked={saveClicked} editClicked={editClicked} toggleCelsius={toggleCelsius} toggleClick={toggleClick} />
+       <img 
+          className={`save-button ${saveClicked && 'clicked'}`} 
+          src='https://img.icons8.com/?size=512&id=82461&format=png'
+          alt='save button'
+          onClick={() => toggleClick('saveClicked')}/>
+
         <div className='result-display'>
           <WeatherCard result={result}/>
           <img 

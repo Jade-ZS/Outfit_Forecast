@@ -14,3 +14,19 @@
   margin-left: 10%;
   grid-area: 1 / 2 / 2 / 3;
 }
+
+.save-button {
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background: white;
+}
+
+.save-button:hover {
+  background: green;
+}
+
+.save-button.clicked {
+  background: red;
+}
+
