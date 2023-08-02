@@ -28,7 +28,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/saved' element={<Saves /> } />
-            {/* <Route path=':id' element={<SingleView />} /> */}
+          <Route path='/:id' element={<SingleView />} />
+          {/* </ Route > */}
           {/* <Route path='*' element={<NotFound />} /> */}
         </Routes>
       </SaveContext.Provider>

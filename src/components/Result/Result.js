@@ -6,7 +6,7 @@ import { useState, useContext, useEffect } from 'react';
 export default function Result({result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
-  let location = result && {...result.coord, name:result.name, country:result.sys.country};
+  let location = result && {...result.coord, name:result.name, country:result.sys.country, id:result.name+result.sys.country};
 
   useEffect(() => {
     const checkIfSaved = () => {

@@ -11,7 +11,7 @@ export default function Saves() {
     let {name, country, id} = element;
     return (
       <div className='city-name' key={id}>
-        <Link to={id}>
+        <Link to={`/${id}`}>
           <span>{name}</span>
           <sup>{country}</sup>
         </Link>
@@ -20,10 +20,10 @@ export default function Saves() {
   })
 
   return (
-    <div className='saves'>
+    <div className='saves' key='saves'>
       <Link to='/'><p>🏠</p></Link>
       <p>saved</p>
-      <div>{savedCards}</div>
+      <div key='savedCards'>{savedCards}</div>
     </div>
   )
 }
