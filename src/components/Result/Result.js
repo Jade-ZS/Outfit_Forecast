@@ -11,7 +11,7 @@ export default function Result({result}) {
   useEffect(() => {
     const checkIfSaved = () => {
       const output = saves.some(element => JSON.stringify(element) === JSON.stringify(location));
-      console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
+      // console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
       return output;
     }
 
@@ -23,10 +23,9 @@ export default function Result({result}) {
     if(isSaved) {
       deleteSave(location);
     } else {
-      // location = {...location, id: Date.now()}
       addSave(location);
     }
-    console.log('onclick saves: ', saves)
+    // console.log('onclick saves: ', saves)
   }
 
   return (

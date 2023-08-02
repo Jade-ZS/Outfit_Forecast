@@ -15,12 +15,16 @@ export default function SingleView() {
   console.log('saves', saves)
   const selectedCard = saves.filter(element => element.id === id)[0]
   // console.log('selectedCard: ', selectedCard)
-  const { lon, lat } = selectedCard;
+ 
   // console.log('lon lat' , lon, lat)
 
   useEffect(() => {
-    fetchWeather(lat, lon)
-    .then(res => setWeather(res))
+    if (selectedCard) {
+      const { lon, lat } = selectedCard;
+      fetchWeather(lat, lon)
+      .then(res => setWeather(res))
+    }
+  
   }, [])
 
   return (
