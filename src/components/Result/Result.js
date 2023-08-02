@@ -8,14 +8,15 @@ export default function Result({result}) {
   const [isSaved, setIsSaved] = useState(false);
   const location = result && result.coord;
 
-  const checkIfSaved = () => {
-    const output = saves.some(element => JSON.stringify(element) === JSON.stringify(location));
-    console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
-    return output;
-  }
-
   useEffect(() => {
+    const checkIfSaved = () => {
+      const output = saves.some(element => JSON.stringify(element) === JSON.stringify(location));
+      console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
+      return output;
+    }
+
     setIsSaved(checkIfSaved());
+    
   }, [saves, location])
 
   const handleSaveClick = () => {
