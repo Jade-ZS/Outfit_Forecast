@@ -5,19 +5,18 @@ import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 
-export default function Home({saveLocation}) {
+export default function Home() {
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState('false');
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
-  const [close, setClose] = useState(false);
+  const [close, setClose] = useState(true);
 
   const addWeather = weather => setResult(weather);
   const checkAddress = value => setIsValid(value);
   const handleClose = () => setClose(true);
   const clearForm = () => setKeyword('');
   
-  const disableLink = e => e.preventDefault();
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
@@ -48,6 +47,7 @@ export default function Home({saveLocation}) {
       return result;
     }
   }
+
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
@@ -60,16 +60,14 @@ export default function Home({saveLocation}) {
       setClose(false);
     }
     setIfSubmit(false);
-  }, [keyword, ifSubmit])
+  }, [keyword, ifSubmit, isValid])
 
-// onClick={e => {!close && e.preventDefault()}}
-// disabled={!close}
   return(
     <div className='home-page'>
       <div className='search-bar'>
-        <Link to='/saved' ><span>view saved ---</span></Link>
-        <input  className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-        <input type='submit' value='submit' onClick={handleSubmit}/>
+        <Link to='/saved' onClick={e => {!close && e.preventDefault()}} ><span>view saved ---</span></Link>
+        <input  disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
+        <input disabled={!close} type='submit' value='submit' onClick={handleSubmit}/>
       </div>
       <div className='result-container'>
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={'invalid address'}/>}
