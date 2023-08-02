@@ -6,14 +6,8 @@ import { useState } from 'react';
 export default function Home({saveLocation}) {
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
-
-  const addWeather = weather => {
-    setResult(weather);
-  }
-
-  const checkAddress = value => {
-    setIsValid(value);
-  }
+  const addWeather = weather => setResult(weather);
+  const checkAddress = value => setIsValid(value);
 
   return(
     <div className='home-page'>

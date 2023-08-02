@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import NotFound from '../NotFound/NotFound';
@@ -10,18 +10,15 @@ import { SaveContext } from '../../SaveContext';
 function App() {
 
   const [saves, setSaves] = useState([]);
-  const addSave = location => {
-    setSaves([...saves, location]);
-  }
-  
+  const addSave = location => setSaves([...saves, location]);
   const deleteSave = location => {
     const updatedSaves = saves.filter(element => JSON.stringify(element) !== JSON.stringify(location))
     setSaves(updatedSaves);
-  }
+  };
 
   return (
     <div>
-      <SaveContext.Provider value={{saves, setSaves, addSave, deleteSave}}>
+      <SaveContext.Provider value={{saves, addSave, deleteSave}}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/saved'>
