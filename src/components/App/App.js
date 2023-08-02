@@ -27,8 +27,11 @@ function App() {
       <SaveContext.Provider value={{saves, setSaves, addSave, deleteSave}}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/saved' element={<Saves /> } />
-            {/* <Route path=':id' element={<SingleView />} /> */}
+          <Route path='/saved'>
+            <Route index element={<Saves />}/>
+            <Route path=':id' element={<SingleView />} />
+          </Route>
+          {/* </ Route > */}
           {/* <Route path='*' element={<NotFound />} /> */}
         </Routes>
       </SaveContext.Provider>
