@@ -1,17 +1,19 @@
 import './Result.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ButtonBar from '../ButtonBar/ButtonBar';
-import { useState } from 'react';
+import { SaveContext } from '../../SaveContext';
+import { useState, useContext } from 'react';
 
 export default function Result({result}) {
   // const [isClicked, setIsClicked] = useState({saveClicked: false, editClicked: false})
   const [saveClicked, setSaveClicked] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
   const [toggleCelsius, setToggleCelsius] = useState(true);
-
+  const { addSave } = useContext(SaveContext);
   const toggleClick = (action) => {
     if(action === 'saveClicked') {
       setSaveClicked(!saveClicked);
+      addSave(result);
     }
     if(action === 'editClicked') {
       setEditClicked(!editClicked);
