@@ -11,7 +11,7 @@ export default function Saves() {
     let {name, country, id} = element;
     return (
       <div className='city-name' key={id}>
-        <Link to={`/${id}`}>
+        <Link to={`${id}`}>
           <span>{name}</span>
           <sup>{country}</sup>
         </Link>
