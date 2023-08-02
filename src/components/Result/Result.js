@@ -6,7 +6,7 @@ import { useState, useContext, useEffect } from 'react';
 export default function Result({result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
-  const location = result && result.coord;
+  let location = result && {...result.coord, name:result.name, country:result.sys.country};
 
   useEffect(() => {
     const checkIfSaved = () => {
@@ -17,12 +17,13 @@ export default function Result({result}) {
 
     setIsSaved(checkIfSaved());
     
-  }, [saves, location])
+  }, [saves, location, isSaved])
 
   const handleSaveClick = () => {
     if(isSaved) {
       deleteSave(location);
     } else {
+      // location = {...location, id: Date.now()}
       addSave(location);
     }
     console.log('onclick saves: ', saves)
