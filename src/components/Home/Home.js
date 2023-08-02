@@ -1,6 +1,4 @@
 import './Home.css';
-import SearchBar from '../SearchBar/SearchBar';
-import ResultContainer from '../ResultContainer/ResultContainer';
 import { useState, useEffect } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
@@ -8,16 +6,15 @@ import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 
 export default function Home({saveLocation}) {
+  const [keyword, setKeyword] = useState('');
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
   const [close, setClose] = useState(false);
+
   const addWeather = weather => setResult(weather);
   const checkAddress = value => setIsValid(value);
   const disableLink = e => e.preventDefault();
   const handleClose = () => setClose(true);
-
-  const [keyword, setKeyword] = useState('');
-  const [weatherResult, setWeatherResult] = useState('');
   const clearForm = () => setKeyword('');
 
   const getGeocode = async keyword => {
@@ -41,14 +38,12 @@ export default function Home({saveLocation}) {
       alert('this field is required');
       return;
     }
-
     const geocode = await getGeocode(keyword);
     if (typeof geocode !== 'string') {
       clearForm();
       const weather = await getWeather(geocode)
-      setWeatherResult(weather);
       addWeather(weather);
-      return weatherResult;
+      return result;
     }
   }
   const handleChange = e => setKeyword(e.target.value);
@@ -57,7 +52,6 @@ export default function Home({saveLocation}) {
       handleSubmit();
     }
   }
-
 
 // onClick={e => {!close && e.preventDefault()}}
 // disabled={!close}
@@ -71,12 +65,6 @@ export default function Home({saveLocation}) {
       <div className='result-container'>
         {isValid ? <Result result={result}/> : <AlertBox message={'invalid address'}/>}
       </div>
-
-
-
-      {/* <SearchBar close={close} addWeather={addWeather} checkAddress={checkAddress}/>
-      <ResultContainer isValid={isValid} result={result} saveLocation={saveLocation}/>
-      {!isValid && <AlertBox close={close} message='Invalid Address!!!' handleClose={handleClose}/>} */}
     </div>
   );
 }
