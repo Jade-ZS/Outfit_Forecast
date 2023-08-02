@@ -5,7 +5,7 @@ import AlertBox from '../AlertBox/AlertBox';
 export default function ResultContainer({isValid, result}) {
   return (
     <div className='result-container'>
-      {isValid ? <Result result={result}/> : <AlertBox message='Invalid Address!!!' />}
+      {isValid && <Result result={result}/>}
     </div>
   )
 }

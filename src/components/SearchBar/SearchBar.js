@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 
-export default function SearchBar({addWeather, checkAddress}) {
+export default function SearchBar({close, addWeather, checkAddress}) {
   const [keyword, setKeyword] = useState('');
   const [weatherResult, setWeatherResult] = useState('');
   const clearForm = () => setKeyword('');
@@ -52,9 +52,9 @@ export default function SearchBar({addWeather, checkAddress}) {
 
   return(
     <div className='search-bar'>
-      <Link to='/saved'><span>view saved ---</span></Link>
-      <input required className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-      <input type='submit' value='submit' onClick={handleSubmit}/>
+      <Link to='/saved' onClick={e => {!close && e.preventDefault()}}><span>view saved ---</span></Link>
+      <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
+      <input disabled={!close} type='submit' value='submit' onClick={handleSubmit}/>
     </div>
   )
 }
