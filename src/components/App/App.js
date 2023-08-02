@@ -12,11 +12,19 @@ function App() {
   const [saves, setSaves] = useState([]);
   const addSave = location => {
     setSaves([...saves, location]);
+    console.log('addSave: ', saves)
+  }
+  
+  const deleteSave = location => {
+    let indexToDelete = saves.findIndex(element => element.name === location.name);
+    let savesCopy = [...saves];
+    savesCopy.splice(indexToDelete, 1);
+    setSaves(savesCopy);
   }
 
   return (
     <div>
-      <SaveContext.Provider value={{saves, setSaves, addSave}}>
+      <SaveContext.Provider value={{saves, setSaves, addSave, deleteSave}}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/saved' element={<Saves /> } />

@@ -9,11 +9,11 @@ export default function Result({result}) {
   const [saveClicked, setSaveClicked] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
   const [toggleCelsius, setToggleCelsius] = useState(true);
-  const { addSave } = useContext(SaveContext);
+  const { addSave, deleteSave } = useContext(SaveContext);
   const toggleClick = (action) => {
     if(action === 'saveClicked') {
       setSaveClicked(!saveClicked);
-      addSave(result);
+      saveClicked ? addSave(result) : deleteSave(result);
     }
     if(action === 'editClicked') {
       setEditClicked(!editClicked);

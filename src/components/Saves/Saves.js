@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { SaveContext } from '../../SaveContext';
 
 export default function Saves() {
-  const { saves, setSaves } = useContext(SaveContext)
+  const { saves } = useContext(SaveContext)
   console.log('saves Saves: ', saves)
   return (
     <div className='saves'>
