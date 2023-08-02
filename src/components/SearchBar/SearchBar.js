@@ -39,11 +39,7 @@ export default function SearchBar({close, addWeather, checkAddress}) {
       return weatherResult;
     }
   }
-
-  const handleChange = e => {
-    setKeyword(e.target.value);
-  }
-
+  const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
       handleSubmit();
