@@ -1,3 +1,5 @@
+const apiKey = process.env.REACT_APP_API_KEY;
+
 const fetchWeather = (lat, lon) => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=f51a6bd94c6039cb545b8907194c688d`)
   .then(response => {
@@ -10,7 +12,7 @@ const fetchWeather = (lat, lon) => {
 };
 
 const fetchGeocode = address => {
-  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA7kBhFcd_kLf6QbyvhE1NQmcLb_knMNYQ `)
+  return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey} `)
   .then(response => {
     if(!response.ok) {
       throw new Error('Failed to get geocode');

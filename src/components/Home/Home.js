@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import ResultContainer from '../ResultContainer/ResultContainer';
 import { useState } from 'react';
 
-export default function Home() {
+export default function Home({saveLocation}) {
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
 
@@ -19,7 +19,7 @@ export default function Home() {
     <div className='home-page'>
        {console.log('home result: ', result)}
       <SearchBar addWeather={addWeather} checkAddress={checkAddress}/>
-      <ResultContainer isValid={isValid} result={result}/>
+      <ResultContainer isValid={isValid} result={result} saveLocation={saveLocation}/>
     </div>
   );
 }

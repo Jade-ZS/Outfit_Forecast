@@ -3,11 +3,8 @@ import './WeatherCard.css';
 export default function WeatherCard({result}) {
   return (
     <div className='weather-card'>
-      {console.log('weathercard result: ', result)}
-      {result &&
       <div className='city'>
         <div className='city-name'>
-          {/* <span>{JSON.stringify(result)}</span> */}
           <span>{result.name}</span>
           <sup>{result.sys.country}</sup>
         </div>
@@ -19,8 +16,7 @@ export default function WeatherCard({result}) {
           <img className='city-icon' src={`https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`} alt={result.weather[0].description}></img>
           <p>{result.weather[0].description}</p>
         </div>
-      </div>}
-      <img className='cloth-img' src={require('../../assets/autum-sweaters.JPG')} alt='sweaters'/>
+      </div>
     </div>
   )
 }

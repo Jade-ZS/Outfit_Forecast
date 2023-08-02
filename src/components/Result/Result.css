@@ -1,0 +1,32 @@
+.result-display {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15vw;
+}
+
+.weather-card {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.cloth-img {
+  height: 40vh;
+  border-radius: 70%;
+  margin-left: 10%;
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.save-button {
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 100%;
+  background: white;
+}
+
+.save-button:hover {
+  background: green;
+}
+
+.save-button.clicked {
+  background: red;
+}
+
