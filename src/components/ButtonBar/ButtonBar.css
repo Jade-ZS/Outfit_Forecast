@@ -15,3 +15,16 @@
 .save-button:hover {
   background: green;
 }
+
+.edit-button.clicked,
+.save-button.clicked {
+  background: red;
+}
+
+.celsius {
+  color: green;
+}
+
+.fahrenheit {
+  color:red;
+}

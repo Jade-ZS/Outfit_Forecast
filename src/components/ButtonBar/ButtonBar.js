@@ -1,21 +1,24 @@
 import './ButtonBar.css';
-import { useState } from 'react';
 
-export default function ButtonBar({clickSave, clickEdit}) {
-  
+export default function ButtonBar({toggleCelsius, saveClicked, editClicked, toggleClick}) {
+
   return (
-    
     <div className='button-bar'>
-        <p>toggle</p>
+        <p 
+          className={`${toggleCelsius ? 'celsius' : 'fahrenheit' }`}
+          onClick={() => toggleClick('toggleCelsius')}
+        >toggle</p>
         <div>
           <img 
-            className={`edit-button`} 
+            className={`edit-button ${editClicked && 'clicked'}`} 
             src='https://img.icons8.com/?size=512&id=95154&format=png'
-            alt='edit button'/>
+            alt='edit button'
+            onClick={() => toggleClick('editClicked')}/>
           <img 
-            className={`save-button`} 
+            className={`save-button ${saveClicked && 'clicked'}`} 
             src='https://img.icons8.com/?size=512&id=82461&format=png'
-            alt='save button'/>
+            alt='save button'
+            onClick={() => toggleClick('saveClicked')}/>
         </div>
       </div>
   )
