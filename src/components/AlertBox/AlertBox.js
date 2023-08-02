@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 export default function AlertBox({close, message, handleClose}) {
   // const [close, setClose] = useState(false);
 
+  console.log('close: ', close)
   return (
     <div className={`alert-box ${close && 'hidden'}`}>
       <div className='banner'>

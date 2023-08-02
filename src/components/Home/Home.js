@@ -7,16 +7,17 @@ import Result from '../Result/Result';
 
 export default function Home({saveLocation}) {
   const [keyword, setKeyword] = useState('');
+  const [ifSubmit, setIfSubmit] = useState('false');
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
   const [close, setClose] = useState(false);
 
   const addWeather = weather => setResult(weather);
   const checkAddress = value => setIsValid(value);
-  const disableLink = e => e.preventDefault();
   const handleClose = () => setClose(true);
   const clearForm = () => setKeyword('');
-
+  
+  const disableLink = e => e.preventDefault();
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
@@ -34,6 +35,7 @@ export default function Home({saveLocation}) {
   }
 
   const handleSubmit = async () => {
+    setIfSubmit(true);
     if(!keyword.length) {
       alert('this field is required');
       return;
@@ -53,6 +55,13 @@ export default function Home({saveLocation}) {
     }
   }
 
+  useEffect(() => {
+    if(!isValid && ifSubmit) {
+      setClose(false);
+    }
+    setIfSubmit(false);
+  }, [keyword, ifSubmit])
+
 // onClick={e => {!close && e.preventDefault()}}
 // disabled={!close}
   return(
@@ -63,7 +72,7 @@ export default function Home({saveLocation}) {
         <input type='submit' value='submit' onClick={handleSubmit}/>
       </div>
       <div className='result-container'>
-        {isValid ? <Result result={result}/> : <AlertBox message={'invalid address'}/>}
+        {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={'invalid address'}/>}
       </div>
     </div>
   );
