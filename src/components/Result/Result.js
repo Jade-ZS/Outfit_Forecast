@@ -27,7 +27,7 @@ export default function Result({result}) {
     <div>
       {result && 
       <>
-        <ButtonBar saveClicked={saveClicked} editClicked={editClicked} toggleCelsius={toggleCelsius} toggleClick={toggleClick} />
+        <ButtonBar result={result} saveClicked={saveClicked} editClicked={editClicked} toggleCelsius={toggleCelsius} toggleClick={toggleClick} />
         <div className='result-display'>
           <WeatherCard result={result}/>
           <img 
