@@ -28,7 +28,8 @@ function App() {
       {/* {console.log('fetchErr: ', fetchErr)} */}
       <SaveContext.Provider value={{saves, addSave, deleteSave}}>
         <Routes>
-          <Route path='/' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
+          <Route path='/' element={<Home checkErr={checkErr}/>} />
+          <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
           <Route path='/saved'>
             <Route index element={<Saves />}/>
             <Route path=':id' element={<SingleView />} />

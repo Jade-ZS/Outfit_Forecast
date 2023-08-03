@@ -1,11 +1,13 @@
 import './Home.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 
 export default function Home({fetchErr, checkErr}) {
+  const submitRef = useRef();
+
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -86,6 +88,7 @@ export default function Home({fetchErr, checkErr}) {
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
+      submitRef.current.click();
       handleSubmit();
     }
   }
@@ -94,8 +97,8 @@ export default function Home({fetchErr, checkErr}) {
     <div className='home-page'>
       <div className='search-bar'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} ><span>view saved ---</span></Link>
-        <input  disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-        <input disabled={!close} type='submit' value='submit' onClick={handleSubmit}/>
+        <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
+        <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
       <div className='result-container'>
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
