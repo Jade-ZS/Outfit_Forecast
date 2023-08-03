@@ -27,7 +27,7 @@ export default function Home() {
     if(!isValid && ifSubmit) {
       setClose(false);
     } 
-  }, [ifSubmit])
+  }, [ifSubmit, isValid])
   
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
