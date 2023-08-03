@@ -95,9 +95,11 @@ export default function Home({fetchErr, checkErr}) {
         <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
         <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
+        {result ? 
       <div className='result-container'>
+        {/* <img className='welcome-rabbits' src={require('../../assets/welcome-rabbits.png')}/> */}
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
-      </div>
+      </div> : <img src={require('../../assets/welcome-rabbits.png')}/>}
     </div>
   );
 }
