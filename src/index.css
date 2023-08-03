@@ -25,6 +25,12 @@ a {
               -9px -9px 18px #a7d3ff;
 }
 
+.home-button:hover {
+  border-radius: 125px;
+  background: #eeaeca;
+  box-shadow: inset 9px 9px 18px #cf97b0,
+              inset -9px -9px 18px #ffc5e4;
+}
 
 
 @keyframes background-animation {
