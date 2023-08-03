@@ -23,6 +23,7 @@ export default function Home({fetchErr, checkErr}) {
     setClose(true);
     setMessage('');
     setIfSubmit(false);
+    setResult();
   }
 
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function Home({fetchErr, checkErr}) {
       if(!geocode.results.length) {
         setIsValid(false);
         setClose(false);
+        setResult();
         setMessage('invalid address!!!!!');
         return 'invalid address';
       } 
@@ -66,6 +68,7 @@ export default function Home({fetchErr, checkErr}) {
       setIsValid(false);
       setClose(false);
       setMessage('this field is required');
+      setResult();
       return;
     }
     const geocode = await getGeocode(keyword);
@@ -89,17 +92,16 @@ export default function Home({fetchErr, checkErr}) {
       <div className='search-bar'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
           <img 
-            className='view-saved-button'
+            className={`view-saved-button ${!close && 'noHover'}`}
             src={require('../../assets/view-saved.png')}/>
         </Link>
         <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
         <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
-        {result ? 
       <div className='result-container'>
-        {/* <img className='welcome-rabbits' src={require('../../assets/welcome-rabbits.png')}/> */}
+        <img className={`welcome-rabbits ${result && 'hidden'}`} src={require('../../assets/welcome-rabbits.png')}/>
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
-      </div> : <img src={require('../../assets/welcome-rabbits.png')}/>}
+      </div>
     </div>
   );
 }
