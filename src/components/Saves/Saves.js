@@ -8,7 +8,7 @@ export default function Saves() {
   const savedCards = saves.map(element => {
     let {name, country, id} = element;
     return (
-      <Link to={`${id}`}  key={id}>
+      <Link to={`${id}`}  key={id} className='saved-card'>
         <div className='city-name'>
             <span>{name}</span>
             <sup>{country}</sup>

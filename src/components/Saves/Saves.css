@@ -1,11 +1,17 @@
 .savedCards {
   display: flex;
-  gap: 2rem;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.saved-card {
+  margin-top: 2rem;
 }
 
 .savedCards .city-name {
-  margin: 0 4vw;
+  /* margin: 0 4vw; */
   width: 25vw;
   height: 10rem;
   border-radius: 20px;

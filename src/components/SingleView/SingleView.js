@@ -11,9 +11,7 @@ export default function SingleView() {
   const {id} = useParams();
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
-  const selectedCard = saves.filter(element => element.id === id)[0]
-
-  console.log(selectedCard)
+  const selectedCard = saves.filter(element => element.id === id)[0];
  
   useEffect(() => {
     if (selectedCard) {
@@ -25,12 +23,15 @@ export default function SingleView() {
 
   return (
     <>
-      {selectedCard ?  
+      {/* {selectedCard ?   */}
+
+
         <div className='single-view'>
           <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
           <Result isSingleView={true} result={weather}/>
-        </div> : <NotFound />
-      }
+        </div> 
+        
+        {/*  : <NotFound />} */}
     </>
   )
 }
