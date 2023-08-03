@@ -6,27 +6,19 @@ import { useState, useContext, useEffect } from 'react';
 export default function Result({result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
-  let location = result && {...result.coord, name:result.name, country:result.sys.country, id:result.name+result.sys.country};
+  let location = result && {
+    ...result.coord, 
+    name:result.name, 
+    country:result.sys.country, 
+    id:result.name+result.sys.country
+  };
 
   useEffect(() => {
-    const checkIfSaved = () => {
-      const output = saves.some(element => JSON.stringify(element) === JSON.stringify(location));
-      // console.log('checkIfSaved output: ', output, 'isSaved: ', isSaved)
-      return output;
-    }
-
+    const checkIfSaved = () => saves.some(element => JSON.stringify(element) === JSON.stringify(location));
     setIsSaved(checkIfSaved());
-    
   }, [saves, location, isSaved])
 
-  const handleSaveClick = () => {
-    if(isSaved) {
-      deleteSave(location);
-    } else {
-      addSave(location);
-    }
-    // console.log('onclick saves: ', saves)
-  }
+  const handleSaveClick = () => isSaved ? deleteSave(location) : addSave(location);
 
   return (
     <div>

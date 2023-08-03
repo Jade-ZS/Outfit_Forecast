@@ -4,9 +4,7 @@ import { useContext } from 'react';
 import { SaveContext } from '../../SaveContext';
 
 export default function Saves() {
-  const { saves } = useContext(SaveContext)
-  console.log('saves Saves: ', saves)
-
+  const { saves } = useContext(SaveContext);
   const savedCards = saves.map(element => {
     let {name, country, id} = element;
     return (
