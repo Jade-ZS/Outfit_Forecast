@@ -34,7 +34,6 @@ export default function Home({fetchErr, checkErr}) {
   const getGeocode = async keyword => {
     try {
       const geocode = await fetchGeocode(keyword)
-      console.log('try geocode: ', geocode)
       if(!geocode.results.length) {
         setIsValid(false);
         setClose(false);
@@ -45,7 +44,6 @@ export default function Home({fetchErr, checkErr}) {
       setClose(true);
       return geocode.results[0].geometry.location;
     } catch {
-      console.log('geocode catch: ', fetchErr)
       checkErr(true);
     }
    
@@ -56,11 +54,9 @@ export default function Home({fetchErr, checkErr}) {
     try {
       checkErr(false);
       const weather = await fetchWeather(lat, lng);
-      console.log('try weather: ', weather)
       return weather;
     } catch {
       await checkErr(true);
-      console.log('weather catch: ', fetchErr)
     }
   }
 
@@ -75,14 +71,9 @@ export default function Home({fetchErr, checkErr}) {
     const geocode = await getGeocode(keyword);
     if (typeof geocode !== 'string') {
       clearForm();
-      try {
-        const weather = await getWeather(geocode)
-        addWeather(weather);
-        return result;
-      } catch {
-        checkErr(true);
-        console.log('err handle here')
-      }
+      const weather = await getWeather(geocode)
+      addWeather(weather);
+      return result;
     }
   }
   const handleChange = e => setKeyword(e.target.value);
