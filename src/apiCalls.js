@@ -8,7 +8,6 @@ const fetchWeather = (lat, lon) => {
     }
     return response.json();
   })
-  .catch(error => console.log(error));
 };
 
 const fetchGeocode = address => {
@@ -29,7 +28,6 @@ const fetchIcon = iconCode => {
     }
     return response.json();
   })
-  .catch(error => console.log(error));
 };
 
 export {

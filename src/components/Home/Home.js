@@ -5,7 +5,7 @@ import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 
-export default function Home() {
+export default function Home({fetchErr, checkErr}) {
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -30,22 +30,36 @@ export default function Home() {
   }, [ifSubmit, isValid])
   
   const getGeocode = async keyword => {
-    const geocode = await fetchGeocode(keyword)
-    if(!geocode.results.length) {
-      setIsValid(false);
-      setClose(false);
-      setMessage('invalid address!!!!!');
-      return 'invalid address';
-    } 
-    setIsValid(true);
-    setClose(true);
-    return geocode.results[0].geometry.location;
+    try {
+      const geocode = await fetchGeocode(keyword)
+      console.log('try geocode: ', geocode)
+      if(!geocode.results.length) {
+        setIsValid(false);
+        setClose(false);
+        setMessage('invalid address!!!!!');
+        return 'invalid address';
+      } 
+      setIsValid(true);
+      setClose(true);
+      return geocode.results[0].geometry.location;
+    } catch {
+      console.log('geocode catch: ', fetchErr)
+      checkErr(true);
+    }
+   
   }
 
   const getWeather = async geocode => {
-      const { lat, lng } = geocode;
+    const { lat, lng } = geocode;
+    try {
+      checkErr(false);
       const weather = await fetchWeather(lat, lng);
+      console.log('try weather: ', weather)
       return weather;
+    } catch {
+      await checkErr(true);
+      console.log('weather catch: ', fetchErr)
+    }
   }
 
   const handleSubmit = async () => {
@@ -59,9 +73,14 @@ export default function Home() {
     const geocode = await getGeocode(keyword);
     if (typeof geocode !== 'string') {
       clearForm();
-      const weather = await getWeather(geocode)
-      addWeather(weather);
-      return result;
+      try {
+        const weather = await getWeather(geocode)
+        addWeather(weather);
+        return result;
+      } catch {
+        checkErr(true);
+        console.log('err handle here')
+      }
     }
   }
   const handleChange = e => setKeyword(e.target.value);
