@@ -25,7 +25,7 @@ function App() {
             <Route index element={<Saves />}/>
             <Route path=':id' element={<SingleView />} />
           </Route>
-          {/* <Route path='*' element={<NotFound />} /> */}
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </SaveContext.Provider>
     </div>
