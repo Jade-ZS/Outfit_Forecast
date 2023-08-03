@@ -1,6 +1,7 @@
 .button-wrapper {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-right: 3vw;
   margin-top: 2vh;
 }
@@ -27,6 +28,7 @@
   /* grid-area: 1 / 2 / 2 / 3; */
 }
 
+.close-button,
 .save-button {
   height: 5vh;
   padding: 1vh;
@@ -38,6 +40,7 @@
   background: rgba(255, 192, 203, 0.728);
 }
 
+.close-button:hover,
 .save-button.clicked {
   background: rgb(248, 74, 103);
 }

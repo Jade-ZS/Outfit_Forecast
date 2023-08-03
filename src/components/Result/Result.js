@@ -32,7 +32,7 @@ export default function Result({isSingleView, result}) {
             alt='save button'
             onClick = {handleSaveClick}
           />
-          {isSingleView && <Link to='/saved'>X</Link>}
+          {isSingleView && <Link to='/saved'><img className='close-button' alt='close button' src={require('../../assets/close-button.png')}/></Link>}
         </div>
 
         <div className='result-display'>
