@@ -31,7 +31,7 @@ export default function SingleView() {
         .then(weather => setWeather(weather))
         .catch(() => navigate('/*'))
     }
-  }, [selectedSavedCard])
+  }, [selectedSavedCard, id, navigate])
 
   return (
     <>
