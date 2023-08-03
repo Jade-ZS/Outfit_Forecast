@@ -21,15 +21,10 @@ export default function SingleView() {
   }, [selectedCard])
 
   return (
-    <>
-      <p>single view</p>
+    <div className='single-view'>
       <Link to='/'>🏠</Link>
-      <div>
       <Link to='/saved'>X</Link>
-      </div>
-      <p>{id}</p>
-      <p>{Object.keys(weather)}</p>
       <Result result={weather}/>
-    </>
+    </div>
   )
 }

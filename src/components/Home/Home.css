@@ -67,4 +67,5 @@
 .search-input {
   height: 1rem;
   width: 30vw;
+  outline: none;
 }

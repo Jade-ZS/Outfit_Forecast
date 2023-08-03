@@ -21,7 +21,7 @@ export default function Result({result}) {
   const handleSaveClick = () => isSaved ? deleteSave(location) : addSave(location);
 
   return (
-    <div>
+    <div className='result-card'>
       {result && 
       <>
        <img 
