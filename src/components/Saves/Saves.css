@@ -1,3 +1,25 @@
-.saves {
-  background: pink;
+.savedCards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
+
+.savedCards .city-name {
+  width: 25vw;
+  height: 10rem;
+  border-radius: 20px;
+  background: rgba(160, 70, 184, 0.765);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.savedCards .city-name:hover {
+  background: rgba(213, 132, 236, 0.572);
+}
+
+
+
+

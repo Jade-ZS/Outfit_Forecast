@@ -5,6 +5,11 @@ html {
   animation: background-animation 20s ease-in-out infinite;
 }
 
+a {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
 @keyframes background-animation {
   0% {
     background-position: 0%;

@@ -36,16 +36,12 @@
 
 .welcome-rabbits {
   height: 60vh;
-  /* border-radius: 50%; */
-  /* background: white; */
-  /* border: solid 5rem rgba(255, 192, 203, 0.66); */
 }
 
 .view-saved-button {
   height: 5rem;
   padding: 0.1rem;
   border-radius: 50%;
-  /* background: pink; */
   margin-right: 2rem;
   border-radius: 50%;
   border-radius: 50%;
@@ -55,7 +51,6 @@
 }
 
 .view-saved-button:hover {
-  /* background: green; */
   border-radius: 50%;
   background: #f2caca;
   box-shadow: inset 8px 8px 21px #ceacac,

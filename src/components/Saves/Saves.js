@@ -18,9 +18,9 @@ export default function Saves() {
   })
 
   return (
-    <div className='saves' key='saves'>
-      <Link to='/'><p>🏠</p></Link>
-      {saves.length ? <div key='savedCards'>{savedCards}</div> : <p>You haven't saved any location yet.</p>}
+    <div className='saves'>
+      <Link to='/'><p className='home-button'>🏠</p></Link>
+      {saves.length ? <div className='savedCards'>{savedCards}</div> : <p>You haven't saved any location yet.</p>}
      
     </div>
   )
