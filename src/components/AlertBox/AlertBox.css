@@ -1,6 +1,6 @@
 .alert-box {
   position: fixed;
-  top: -5rem;
+  top: 20vh;
   left: 33%;
   width: 30vw;
   display: flex;
@@ -10,6 +10,7 @@
   background: rgb(106, 198, 219);
   border: solid 2px solid;
   border-radius: 20px;
+  z-index: 2;
 }
 
 .banner {

@@ -98,12 +98,13 @@ export default function Home({fetchErr, checkErr}) {
         <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
         <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
+      {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
         <div className={`welcome  ${result && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
-        {isValid ? <Result isSingleView={false} result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
+        {isValid && <Result isSingleView={false} result={result}/>}
       </div>
     </div>
   );
