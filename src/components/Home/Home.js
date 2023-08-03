@@ -92,6 +92,7 @@ export default function Home({fetchErr, checkErr}) {
       <div className='search-bar'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
           <img 
+            alt='save button'
             className={`view-saved-button ${!close && 'noHover'}`}
             src={require('../../assets/view-saved.png')}/>
         </Link>
