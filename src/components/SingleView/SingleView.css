@@ -1,3 +1,4 @@
 .single-view .result-card {
-  border: solid 2px pink;
+  border-radius: 20px;
+  background: rgba(164, 215, 235, 0.951);
 }
