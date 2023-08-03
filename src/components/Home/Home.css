@@ -27,11 +27,18 @@
 
 }
 
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
 .welcome-rabbits {
-  height: 80%;
-  border-radius: 50%;
-  background: white;
-  border: solid 5rem rgba(255, 192, 203, 0.66);
+  height: 60vh;
+  /* border-radius: 50%; */
+  /* background: white; */
+  /* border: solid 5rem rgba(255, 192, 203, 0.66); */
 }
 
 .view-saved-button {

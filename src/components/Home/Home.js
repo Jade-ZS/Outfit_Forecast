@@ -99,7 +99,10 @@ export default function Home({fetchErr, checkErr}) {
         <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
       <div className='result-container'>
-        <img className={`welcome-rabbits ${result && 'hidden'}`} src={require('../../assets/welcome-rabbits.png')}/>
+        <div className={`welcome  ${result && 'hidden'}`}>
+          <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
+          <p>Let's explore weather!</p>
+        </div>
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
       </div>
     </div>
