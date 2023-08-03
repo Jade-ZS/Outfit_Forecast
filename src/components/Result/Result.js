@@ -26,13 +26,6 @@ export default function Result({isSingleView, result}) {
       {result && 
       <>
        {isSingleView && <Link to='/saved'>X</Link>}
-       <img 
-          className={`save-button ${isSaved && 'clicked'}`}
-          src='https://img.icons8.com/?size=512&id=82461&format=png'
-          alt='save button'
-          onClick = {handleSaveClick}
-        />
-
         <div className='result-display'>
           <WeatherCard result={result}/>
           <img 
@@ -40,6 +33,13 @@ export default function Result({isSingleView, result}) {
             src={require('../../assets/autum-sweaters.JPG')} 
             alt='sweaters'/>
         </div>
+
+        <img 
+          className={`save-button ${isSaved && 'clicked'}`}
+          src='https://img.icons8.com/?size=512&id=82461&format=png'
+          alt='save button'
+          onClick = {handleSaveClick}
+        />
       </>
       }
     </div>
