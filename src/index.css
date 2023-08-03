@@ -27,9 +27,10 @@ a {
 
 .home-button:hover {
   border-radius: 125px;
-  background: #eeaeca;
-  box-shadow: inset 9px 9px 18px #cf97b0,
-              inset -9px -9px 18px #ffc5e4;
+  background: #c781a0;
+  background: #94bbe9;
+  box-shadow:  inset 9px 9px 18px #81a3cb,
+              inset -9px -9px 18px #a7d3ff;
 }
 
 
