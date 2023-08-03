@@ -14,17 +14,14 @@
 }
 
 .city p {
-  /* margin-top: 10px; */
   text-transform: uppercase;
   letter-spacing: 0.05vw;
   font-size: 1vw;
 }
 
 .city-temp {
-  /* font-size: 5rem; */
   font-size: 1vw;
   font-weight: bold;
-  /* margin-top: 10px; */
   margin-top: 0.5rem;
   color: #1e2432;
   text-align: center;
@@ -49,8 +46,6 @@
 .city-icon {
   margin-top: 1vh;
   height: 20vh;
-  /* width: 100px; */
-  /* height: 100px; */
 }
 
 .info {
