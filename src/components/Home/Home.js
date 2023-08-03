@@ -1,11 +1,13 @@
 import './Home.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 
-export default function Home() {
+export default function Home({fetchErr, checkErr}) {
+  const submitRef = useRef();
+
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -27,25 +29,35 @@ export default function Home() {
     if(!isValid && ifSubmit) {
       setClose(false);
     } 
-  }, [ifSubmit])
+  }, [ifSubmit, isValid])
   
   const getGeocode = async keyword => {
-    const geocode = await fetchGeocode(keyword)
-    if(!geocode.results.length) {
-      setIsValid(false);
-      setClose(false);
-      setMessage('invalid address!!!!!');
-      return 'invalid address';
-    } 
-    setIsValid(true);
-    setClose(true);
-    return geocode.results[0].geometry.location;
+    try {
+      const geocode = await fetchGeocode(keyword)
+      if(!geocode.results.length) {
+        setIsValid(false);
+        setClose(false);
+        setMessage('invalid address!!!!!');
+        return 'invalid address';
+      } 
+      setIsValid(true);
+      setClose(true);
+      return geocode.results[0].geometry.location;
+    } catch {
+      checkErr(true);
+    }
+   
   }
 
   const getWeather = async geocode => {
-      const { lat, lng } = geocode;
+    const { lat, lng } = geocode;
+    try {
+      checkErr(false);
       const weather = await fetchWeather(lat, lng);
       return weather;
+    } catch {
+      await checkErr(true);
+    }
   }
 
   const handleSubmit = async () => {
@@ -67,6 +79,7 @@ export default function Home() {
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {
+      submitRef.current.click();
       handleSubmit();
     }
   }
@@ -75,8 +88,8 @@ export default function Home() {
     <div className='home-page'>
       <div className='search-bar'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} ><span>view saved ---</span></Link>
-        <input  disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-        <input disabled={!close} type='submit' value='submit' onClick={handleSubmit}/>
+        <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
+        <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
       </div>
       <div className='result-container'>
         {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
