@@ -19,7 +19,9 @@ export default function Saves() {
 
   return (
     <div className='saves'>
-      <Link to='/'><p className='home-button'>🏠</p></Link>
+      <Link to='/'>
+        <img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/>
+      </Link>
       {saves.length ? <div className='savedCards'>{savedCards}</div> : <p className='empty-saves-message'>You haven't saved any location yet.</p>}
     </div>
   )
