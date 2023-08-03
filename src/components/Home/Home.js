@@ -7,7 +7,7 @@ import Result from '../Result/Result';
 
 export default function Home() {
   const [keyword, setKeyword] = useState('');
-  const [ifSubmit, setIfSubmit] = useState('false');
+  const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [result, setResult] = useState();
   const [close, setClose] = useState(true);
@@ -16,21 +16,27 @@ export default function Home() {
   const addWeather = weather => setResult(weather);
   const checkAddress = value => setIsValid(value);
   const handleClose = () => setClose(true);
-  const clearForm = () => setKeyword('');
+  const clearForm = () => {
+    setKeyword('');
+    setIsValid(true);
+    setClose(true);
+    setMessage('');
+    setIfSubmit(false);
+  }
 
   useEffect(() => {
-    // setMessage('');
     if(!isValid && ifSubmit) {
       setClose(false);
     } 
-    setIfSubmit(false);
-  }, [keyword, ifSubmit, isValid])
+    // setIfSubmit(false);
+  }, [ifSubmit])
   
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
       checkAddress(false);
       setIsValid(false);
+      setClose(false);
       setMessage('invalid address!!!!!');
       return 'invalid address!!!';
     } 
@@ -50,6 +56,7 @@ export default function Home() {
     if(!keyword.length) {
       // alert('this field is required');
       setIsValid(false);
+      setClose(false);
       setMessage('this field is required');
       return;
     }
@@ -64,7 +71,7 @@ export default function Home() {
 
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
-    if (e.code === 'Enter' && !ifSubmit) {
+    if (e.code === 'Enter') {
       handleSubmit();
     }
   }
