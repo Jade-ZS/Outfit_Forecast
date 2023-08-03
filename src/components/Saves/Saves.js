@@ -19,7 +19,6 @@ export default function Saves() {
 
   return (
     <div className='saves'>
-      {console.log('saves: ', saves)}
       <Link to='/'><p className='home-button'>🏠</p></Link>
       {saves.length ? <div className='savedCards'>{savedCards}</div> : <p>You haven't saved any location yet.</p>}
     </div>

@@ -23,8 +23,7 @@ export default function SingleView() {
   return (
     <div className='single-view'>
       <Link to='/'>🏠</Link>
-      <Link to='/saved'>X</Link>
-      <Result result={weather}/>
+      <Result isSingleView={true} result={weather}/>
     </div>
   )
 }

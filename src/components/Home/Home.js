@@ -103,7 +103,7 @@ export default function Home({fetchErr, checkErr}) {
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
-        {isValid ? <Result result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
+        {isValid ? <Result isSingleView={false} result={result}/> : <AlertBox close={close} handleClose={handleClose} message={message}/>}
       </div>
     </div>
   );
