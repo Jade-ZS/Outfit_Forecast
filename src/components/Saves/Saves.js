@@ -20,8 +20,8 @@ export default function Saves() {
   return (
     <div className='saves' key='saves'>
       <Link to='/'><p>🏠</p></Link>
-      <p>saved</p>
-      <div key='savedCards'>{savedCards}</div>
+      {saves.length ? <div key='savedCards'>{savedCards}</div> : <p>You haven't saved any location yet.</p>}
+     
     </div>
   )
 }

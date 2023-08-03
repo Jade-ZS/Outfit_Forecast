@@ -11,7 +11,7 @@
   padding: 40px 8%;
 }
 
-p {
+.city p {
   margin-top: 10px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
