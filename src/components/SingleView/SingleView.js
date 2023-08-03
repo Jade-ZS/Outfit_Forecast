@@ -22,7 +22,7 @@ export default function SingleView() {
 
   return (
     <div className='single-view'>
-      <Link to='/'><p className='home-button'>🏠</p></Link>
+      <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
       <Result isSingleView={true} result={weather}/>
     </div>
   )
