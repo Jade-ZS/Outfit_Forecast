@@ -1,3 +1,10 @@
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3vw;
+  margin-top: 2vh;
+}
+
 .result-display {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -17,9 +24,7 @@
 
 .save-button {
   height: 5vh;
-  /* width: 5vw; */
   padding: 1vh;
-  /* padding: 1rem; */
   border-radius: 100%;
   background: white;
 }
