@@ -19,6 +19,7 @@
   height: 40vh;
   border-radius: 70%;
   margin-left: 10%;
+  margin-right: 2em;
   grid-area: 1 / 2 / 2 / 3;
 }
 
