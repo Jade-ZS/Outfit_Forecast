@@ -17,11 +17,6 @@
   margin-bottom: 3rem;
   overflow: auto;
   padding-bottom: 5vh;
-  /* background-image: url('https://images.unsplash.com/photo-1496450681664-3df85efbd29f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHdlYXRoZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60');
-  background-repeat: no-repeat;
-  background-size: cover; */
-
-  
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(255, 255, 255, 0.75);
