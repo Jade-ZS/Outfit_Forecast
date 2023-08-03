@@ -1,11 +1,12 @@
 .alert-box {
   position: fixed;
   top: 10%;
+  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 30vh;
-  background: rgba(106, 198, 219, 0.658);
+  background: rgb(106, 198, 219);
   border: solid 2px solid;
   border-radius: 20px;
 }
@@ -16,6 +17,12 @@
   background: rgb(73, 175, 238);
   border-bottom: solid 2px black;
   border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alert-box button {
+  border-radius: 20px;
 }
 
 .content {
