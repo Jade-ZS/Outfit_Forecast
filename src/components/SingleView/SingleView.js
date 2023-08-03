@@ -4,6 +4,7 @@ import { SaveContext } from '../../SaveContext';
 import { fetchWeather } from '../../apiCalls';
 import Result from '../Result/Result';
 import './SingleView.css';
+import NotFound from '../NotFound/NotFound';
 
 
 export default function SingleView() {
@@ -11,6 +12,8 @@ export default function SingleView() {
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
   const selectedCard = saves.filter(element => element.id === id)[0]
+
+  console.log(selectedCard)
  
   useEffect(() => {
     if (selectedCard) {
@@ -21,9 +24,13 @@ export default function SingleView() {
   }, [selectedCard])
 
   return (
-    <div className='single-view'>
-      <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
-      <Result isSingleView={true} result={weather}/>
-    </div>
+    <>
+      {selectedCard ?  
+        <div className='single-view'>
+          <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
+          <Result isSingleView={true} result={weather}/>
+        </div> : <NotFound />
+      }
+    </>
   )
 }
