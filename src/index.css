@@ -1,6 +1,6 @@
 html {
   background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(148, 187, 233) 100%);
   background-size: 400% 500%;
   animation: background-animation 20s ease-in-out infinite;
 }
@@ -8,6 +8,25 @@ html {
 a {
   color: inherit; 
   text-decoration: inherit; 
+}
+
+.home-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 5rem; */
+  width:calc(100vh / 8);
+  height:calc(100vh / 8);
+  /* height: 5rem;
+  width: 5rem; */
+  font-size: calc(100vh / 15);
+  /* font-size: 3rem; */
+  margin-left: 3vw;
+  border-radius: 50%;
+  /* border-radius: 125px; */
+  background: #94bbe9;
+  box-shadow:  9px 9px 18px #81a3cb,
+              -9px -9px 18px #a7d3ff;
 }
 
 @keyframes background-animation {

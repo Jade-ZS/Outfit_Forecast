@@ -5,6 +5,7 @@
 }
 
 .savedCards .city-name {
+  margin: 0 4vw;
   width: 25vw;
   height: 10rem;
   border-radius: 20px;
