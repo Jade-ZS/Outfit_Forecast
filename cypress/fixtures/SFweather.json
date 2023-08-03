@@ -1,43 +1,44 @@
 {
   "coord": {
-      "lon": -118.2437,
-      "lat": 34.0522
+      "lon": -122.4194,
+      "lat": 37.7749
   },
   "weather": [
       {
-          "id": 800,
-          "main": "Clear",
-          "description": "clear sky",
-          "icon": "01d"
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04d"
       }
   ],
   "base": "stations",
   "main": {
-      "temp": 300.57,
-      "feels_like": 300.84,
-      "temp_min": 293.68,
-      "temp_max": 307.71,
-      "pressure": 1017,
-      "humidity": 48
+      "temp": 290.22,
+      "feels_like": 290.25,
+      "temp_min": 286.94,
+      "temp_max": 297.75,
+      "pressure": 1018,
+      "humidity": 87
   },
   "visibility": 10000,
   "wind": {
-      "speed": 6.69,
-      "deg": 260
+      "speed": 8.75,
+      "deg": 280,
+      "gust": 12.86
   },
   "clouds": {
-      "all": 0
+      "all": 100
   },
-  "dt": 1691106474,
+  "dt": 1691106740,
   "sys": {
-      "type": 1,
-      "id": 3694,
+      "type": 2,
+      "id": 2017837,
       "country": "US",
-      "sunrise": 1691067936,
-      "sunset": 1691117559
+      "sunrise": 1691068483,
+      "sunset": 1691119016
   },
   "timezone": -25200,
-  "id": 5368361,
-  "name": "Los Angeles",
+  "id": 5391959,
+  "name": "San Francisco",
   "cod": 200
 }
