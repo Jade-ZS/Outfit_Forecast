@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { SaveContext } from '../../SaveContext';
-import { fetchWeather } from '../../apiCalls';
+import { fetchWeather, fetchGeocode } from '../../apiCalls';
 import Result from '../Result/Result';
 import './SingleView.css';
 import NotFound from '../NotFound/NotFound';
@@ -11,19 +11,32 @@ export default function SingleView() {
   const {id} = useParams();
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
-  const selectedCard = saves.filter(element => element.id === id)[0];
+  const selectedSavedCard = saves.filter(element => element.id === id)[0];
+  
+  const parseName = id => {
+    return id.slice(0, id.length-2);
+  }
  
   useEffect(() => {
-    if (selectedCard) {
-      const { lon, lat } = selectedCard;
+    if (selectedSavedCard) {
+      const { lon, lat } = selectedSavedCard;
       fetchWeather(lat, lon)
       .then(res => setWeather(res))
     }
-  }, [selectedCard])
+
+    if (!selectedSavedCard && id) {
+      const cityName = parseName(id);
+      fetchGeocode(cityName)
+        .then(response => response.results[0].geometry.location)
+        .then(async geocode => await fetchWeather(geocode.lat, geocode.lng))
+        .then(weather => setWeather(weather))
+      
+    }
+  }, [selectedSavedCard])
 
   return (
     <>
-      {/* {selectedCard ?   */}
+      {/* {selectedSavedCard ?   */}
 
 
         <div className='single-view'>
