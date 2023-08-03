@@ -1,0 +1,46 @@
+html {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(148, 187, 233) 100%);
+  background-size: 400% 500%;
+  animation: background-animation 20s ease-in-out infinite;
+}
+
+a {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
+.home-button {
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:calc(100vh / 8);
+  height:calc(100vh / 8);
+  margin-left: 3vw;
+  border-radius: 50%;
+  background: #94bbe9;
+  box-shadow:  9px 9px 18px #81a3cb,
+              -9px -9px 18px #a7d3ff;
+}
+
+.home-button:hover {
+  border-radius: 125px;
+  background: #c781a0;
+  background: #94bbe9;
+  box-shadow:  inset 9px 9px 18px #81a3cb,
+              inset -9px -9px 18px #a7d3ff;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}

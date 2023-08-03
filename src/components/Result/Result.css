@@ -1,32 +1,39 @@
-.result-display {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15vw;
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 3vw;
+  margin-top: 2vh;
 }
 
-.weather-card {
-  grid-area: 1 / 1 / 2 / 2;
+.result-display {
+  gap: 5vw; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cloth-img {
   height: 40vh;
   border-radius: 70%;
   margin-left: 10%;
-  grid-area: 1 / 2 / 2 / 3;
+  margin-right: 2em;
 }
 
+.close-button,
 .save-button {
-  height: 4rem;
-  padding: 1rem;
+  height: 5vh;
+  padding: 1vh;
   border-radius: 100%;
   background: white;
 }
 
 .save-button:hover {
-  background: green;
+  background: rgba(255, 192, 203, 0.728);
 }
 
+.close-button:hover,
 .save-button.clicked {
-  background: red;
+  background: rgb(248, 74, 103);
 }
 

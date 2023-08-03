@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../Home/Home';
 import NotFound from '../NotFound/NotFound';
@@ -17,15 +17,8 @@ function App() {
     setSaves(updatedSaves);
   };
 
-  // useEffect(() => {
-  //   if(fetchErr) {
-  //     setFetchErr(false);
-  //   }
-  // }, [fetchErr])
-
   return (
     <div>
-      {/* {console.log('fetchErr: ', fetchErr)} */}
       <SaveContext.Provider value={{saves, addSave, deleteSave}}>
         <Routes>
           <Route path='/' element={<Home checkErr={checkErr}/>} />

@@ -8,20 +8,21 @@ export default function Saves() {
   const savedCards = saves.map(element => {
     let {name, country, id} = element;
     return (
-      <div className='city-name' key={id}>
-        <Link to={`${id}`}>
-          <span>{name}</span>
-          <sup>{country}</sup>
-        </Link>
-      </div>
+      <Link to={`${id}`}  key={id} className='saved-card'>
+        <div className='city-name'>
+            <span>{name}</span>
+            <sup>{country}</sup>
+        </div>
+      </Link>
     )
   })
 
   return (
-    <div className='saves' key='saves'>
-      <Link to='/'><p>🏠</p></Link>
-      <p>saved</p>
-      <div key='savedCards'>{savedCards}</div>
+    <div className='saves'>
+      <Link to='/'>
+        <img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/>
+      </Link>
+      {saves.length ? <div className='savedCards'>{savedCards}</div> : <p className='empty-saves-message'>You haven't saved any location yet.</p>}
     </div>
   )
 }

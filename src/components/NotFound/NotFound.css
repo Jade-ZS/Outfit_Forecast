@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
-.err-page img {
+.raining-cloud {
   height: 50vh;
+}
+
+.err-page .home-button {
+  margin-left: 0;
 }

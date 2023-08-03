@@ -1,35 +1,44 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { SaveContext } from '../../SaveContext';
-import { fetchWeather } from '../../apiCalls';
+import { fetchWeather, fetchGeocode } from '../../apiCalls';
 import Result from '../Result/Result';
 import './SingleView.css';
 
-
 export default function SingleView() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
-  const selectedCard = saves.filter(element => element.id === id)[0]
+  const selectedSavedCard = saves.filter(element => element.id === id)[0];
+  
+  const parseName = id => {
+    return id.slice(0, id.length-2);
+  }
  
   useEffect(() => {
-    if (selectedCard) {
-      const { lon, lat } = selectedCard;
+    if (selectedSavedCard) {
+      const { lon, lat } = selectedSavedCard;
       fetchWeather(lat, lon)
       .then(res => setWeather(res))
     }
-  }, [selectedCard])
+
+    if (!selectedSavedCard && id) {
+      const cityName = parseName(id);
+      fetchGeocode(cityName)
+        .then(response => response.results[0].geometry.location)
+        .then(async geocode => await fetchWeather(geocode.lat, geocode.lng))
+        .then(weather => setWeather(weather))
+        .catch(() => navigate('/*'))
+    }
+  }, [selectedSavedCard])
 
   return (
     <>
-      <p>single view</p>
-      <Link to='/'>🏠</Link>
-      <div>
-      <Link to='/saved'>X</Link>
-      </div>
-      <p>{id}</p>
-      <p>{Object.keys(weather)}</p>
-      <Result result={weather}/>
+        <div className='single-view'>
+          <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
+          <Result isSingleView={true} result={weather}/>
+        </div> 
     </>
   )
 }
