@@ -1,4 +1,6 @@
 .single-view .result-card {
   border-radius: 20px;
   background: rgba(164, 215, 235, 0.951);
+  height: 90vh;
+  margin: 0 5rem;
 }
