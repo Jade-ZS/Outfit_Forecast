@@ -14,7 +14,6 @@ export default function Home() {
   const [message, setMessage] = useState('');
 
   const addWeather = weather => setResult(weather);
-  const checkAddress = value => setIsValid(value);
   const handleClose = () => setClose(true);
   const clearForm = () => {
     setKeyword('');
@@ -28,19 +27,17 @@ export default function Home() {
     if(!isValid && ifSubmit) {
       setClose(false);
     } 
-    // setIfSubmit(false);
   }, [ifSubmit])
   
   const getGeocode = async keyword => {
     const geocode = await fetchGeocode(keyword)
     if(!geocode.results.length) {
-      checkAddress(false);
       setIsValid(false);
       setClose(false);
       setMessage('invalid address!!!!!');
-      return 'invalid address!!!';
+      return 'invalid address';
     } 
-    checkAddress(true);
+    setIsValid(true);
     setClose(true);
     return geocode.results[0].geometry.location;
   }
@@ -54,7 +51,6 @@ export default function Home() {
   const handleSubmit = async () => {
     setIfSubmit(true);
     if(!keyword.length) {
-      // alert('this field is required');
       setIsValid(false);
       setClose(false);
       setMessage('this field is required');
@@ -68,7 +64,6 @@ export default function Home() {
       return result;
     }
   }
-
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {

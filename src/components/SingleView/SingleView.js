@@ -18,7 +18,7 @@ export default function SingleView() {
       fetchWeather(lat, lon)
       .then(res => setWeather(res))
     }
-  }, [])
+  }, [selectedCard])
 
   return (
     <>
