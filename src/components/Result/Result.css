@@ -25,10 +25,10 @@
 }
 
 .save-button:hover {
-  background: green;
+  background: rgba(255, 192, 203, 0.728);
 }
 
 .save-button.clicked {
-  background: red;
+  background: rgb(248, 74, 103);
 }
 
