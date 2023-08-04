@@ -52,7 +52,9 @@ describe('Home Page', () => {
         cy.get('.welcome-rabbits')
         cy.get('p')
       })
+  })
 
+  it('should be able to search', () => {
     cy.get('.search-input').type('LA')
     cy.get('input[type=submit]').click()
     cy.wait('@getLAgeo')
@@ -61,10 +63,8 @@ describe('Home Page', () => {
       cy.get('.cloth-img')
       cy.get('.weather-card')
     })
-
     cy.get('.weather-card').within(() => {
       cy.get('.city-icon').should('have.attr', 'src').should('eq','https://openweathermap.org/img/wn/01d@2x.png')
     })
-
   })
 })
