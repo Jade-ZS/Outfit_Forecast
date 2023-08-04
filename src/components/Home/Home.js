@@ -49,7 +49,6 @@ export default function Home({checkErr}) {
     } catch {
       checkErr(true);
     }
-   
   }
 
   const getWeather = async geocode => {
