@@ -53,18 +53,18 @@ describe('Home Page', () => {
         cy.get('p')
       })
 
-
     cy.get('.search-input').type('LA')
     cy.get('input[type=submit]').click()
+    cy.wait('@getLAgeo')
+    cy.wait('@getLAweather')
+    cy.get('.result-container').within(() => {
+      cy.get('.cloth-img')
+      cy.get('.weather-card')
+    })
+
+    cy.get('.weather-card').within(() => {
+      cy.get('.city-icon').should('have.attr', 'src').should('eq','https://openweathermap.org/img/wn/01d@2x.png')
+    })
+
   })
-
-  // it('should be able to search', () => {
-
-  //   cy.get('.search-input').type('LA')
-  //   cy.get('input[type=submit]', { timeout: 10000 }).click()
-  //   cy.url().should('includes', 'result')
-  //   cy.wait(['@testgeo'], { responseTimeout: 15000 });
-  //   // cy.wait('@testgeo')
-  // })
-  
 })
