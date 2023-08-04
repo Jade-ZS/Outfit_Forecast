@@ -67,7 +67,7 @@ export default function Home({fetchErr, checkErr}) {
     if(!keyword.length) {
       setIsValid(false);
       setClose(false);
-      setMessage('this field is required');
+      setMessage('This field is required');
       setResult();
       return;
     }

@@ -47,7 +47,7 @@ describe('Home Page', () => {
     cy.intercept('https://api.openweathermap.org/data/2.5/weather?lat=34.0522342&lon=-118.2436849&units=metric&appid=f51a6bd94c6039cb545b8907194c688d', {
       fixture: 'LAweather.json'
     }).as('getLAweather')
-    
+
     cy.get('.search-input').type('LA')
     cy.get('input[type=submit]').click()
     cy.wait('@getLAgeo')
@@ -81,5 +81,23 @@ describe('Home Page', () => {
       cy.get('sup').contains('°C')
       cy.get('p').contains('overcast clouds')
     })
+  })
+
+  it('should be alerted when search input is invalid', () => {
+    cy.get('input[type=submit]').click()
+    cy.get('.alert-box').within(() => {
+      cy.get('.content')
+      // .find('p').contains('This field is required')
+    })
+    cy.get('button').click()
+
+    cy.get('.search-input').type('jjjjjj')
+    cy.get('input[type=submit]').click()
+    cy.get('.alert-box').within(() => {
+      cy.get('.content')
+      // .find('p').contains('This field is required')
+    })
+    cy.get('button').click()
+
   })
 })
