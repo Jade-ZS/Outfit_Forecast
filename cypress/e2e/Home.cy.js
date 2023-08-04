@@ -36,6 +36,15 @@ describe('Home Page', () => {
   })
 
   it('should visit the home page', () => {
-    cy.get('input')
+    cy.get('.view-saved-button')
+    cy.get('.search-input')
+    cy.get('[href="/result"] > input')
+    cy.get('.welcome')
+      .within(() => {
+        cy.get('.welcome-rabbits')
+        cy.get('p')
+      })
   })
+
+  
 })
