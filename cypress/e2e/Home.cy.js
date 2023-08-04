@@ -1,22 +1,5 @@
 describe('Home Page', () => {
   beforeEach(() => {
-
-    // cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=NY&key=${process.env.REACT_APP_API_KEY}`, {
-    //   fixture: 'NYGeocode.json'
-    // }).as('getNYgeocode')
-
-    // cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=BeijingGkey=${process.env.REACT_APP_API_KEY}`, {
-    //   fixture: 'BeijingGeocode.json'
-    // }).as('getBeijingGeocode')
-
-    // cy.intercept(`https://api.openweathermap.org/data/2.5/weather?lat=39.904211&lon=116.407395&appid=f51a6bd94c6039cb545b8907194c688d`, {
-    //   fixture: 'BeijingWeather.json'
-    // }).as('getBeijingWeather')
-
-    // cy.intercept(`https://api.openweathermap.org/data/2.5/weather?lat=40.7127753&lon=-74.0059728&appid=f51a6bd94c6039cb545b8907194c688d`, {
-    //   fixture: 'NYweather.json'
-    // }).as('getNYweather')
-
     cy.visit('https://outfit-forecast.vercel.app')
   })
 
@@ -93,7 +76,6 @@ describe('Home Page', () => {
     cy.get('input[type=submit]').click()
     cy.get('.alert-box').within(() => {
       cy.get('.content')
-      // .find('p').contains('invalid address')
     })
     cy.get('button').click()
 
@@ -102,7 +84,6 @@ describe('Home Page', () => {
     cy.wait('@getBadInput')
     cy.get('.alert-box').within(() => {
       cy.get('.content')
-      // .find('p').contains('This field is required')
     })
     cy.get('button').click()
 
