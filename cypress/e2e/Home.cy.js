@@ -84,15 +84,22 @@ describe('Home Page', () => {
   })
 
   it('should be alerted when search input is invalid', () => {
+    cy.intercept(' https://maps.googleapis.com/maps/api/geocode/json?address=jjjjjj&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+      body: {
+        "results": [],
+        "status": "ZERO_RESULTS"
+      }
+    }).as('getBadInput')
     cy.get('input[type=submit]').click()
     cy.get('.alert-box').within(() => {
       cy.get('.content')
-      // .find('p').contains('This field is required')
+      // .find('p').contains('invalid address')
     })
     cy.get('button').click()
 
     cy.get('.search-input').type('jjjjjj')
     cy.get('input[type=submit]').click()
+    cy.wait('@getBadInput')
     cy.get('.alert-box').within(() => {
       cy.get('.content')
       // .find('p').contains('This field is required')
