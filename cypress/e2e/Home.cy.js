@@ -62,9 +62,14 @@ describe('Home Page', () => {
     cy.get('.result-container').within(() => {
       cy.get('.cloth-img')
       cy.get('.weather-card')
+      cy.get('.save-button')
     })
     cy.get('.weather-card').within(() => {
       cy.get('.city-icon').should('have.attr', 'src').should('eq','https://openweathermap.org/img/wn/01d@2x.png')
+      cy.contains('span', 'Los Angeles')
+      cy.get('.city-temp').contains('301')
+      cy.get('sup').contains('°C')
+      cy.get('p').contains('clear sky')
     })
   })
 })
