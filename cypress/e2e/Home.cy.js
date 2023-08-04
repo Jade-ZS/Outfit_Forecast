@@ -86,6 +86,5 @@ describe('Home Page', () => {
       cy.get('.content')
     })
     cy.get('button').click()
-
   })
 })
