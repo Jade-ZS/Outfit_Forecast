@@ -17,22 +17,6 @@ describe('Home Page', () => {
     //   fixture: 'NYweather.json'
     // }).as('getNYweather')
 
-    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=SF&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw`, {
-        fixture: 'SFGeocode.json'
-    }).as('getSFgeo')
-
-    cy.intercept(`https://api.openweathermap.org/data/2.5/weather?lat=37.7749295&lon=-122.4194155&units=metric&appid=f51a6bd94c6039cb545b8907194c688d`, {
-      fixture: 'SFweather.json'
-    }).as('getSFweather')
-
-    cy.intercept('https://maps.googleapis.com/maps/api/geocode/json?address=LA&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
-      fixture: 'LAgeocode.json'
-    }).as('getLAgeo')
-
-    cy.intercept('https://api.openweathermap.org/data/2.5/weather?lat=34.0522342&lon=-118.2436849&units=metric&appid=f51a6bd94c6039cb545b8907194c688d', {
-      fixture: 'LAweather.json'
-    }).as('getLAweather')
-
     cy.visit('https://outfit-forecast.vercel.app')
   })
 
@@ -48,6 +32,22 @@ describe('Home Page', () => {
   })
 
   it('should be able to search', () => {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=SF&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw`, {
+        fixture: 'SFGeocode.json'
+    }).as('getSFgeo')
+
+    cy.intercept(`https://api.openweathermap.org/data/2.5/weather?lat=37.7749295&lon=-122.4194155&units=metric&appid=f51a6bd94c6039cb545b8907194c688d`, {
+      fixture: 'SFweather.json'
+    }).as('getSFweather')
+
+    cy.intercept('https://maps.googleapis.com/maps/api/geocode/json?address=LA&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+      fixture: 'LAgeocode.json'
+    }).as('getLAgeo')
+
+    cy.intercept('https://api.openweathermap.org/data/2.5/weather?lat=34.0522342&lon=-118.2436849&units=metric&appid=f51a6bd94c6039cb545b8907194c688d', {
+      fixture: 'LAweather.json'
+    }).as('getLAweather')
+    
     cy.get('.search-input').type('LA')
     cy.get('input[type=submit]').click()
     cy.wait('@getLAgeo')
