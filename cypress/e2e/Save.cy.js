@@ -1,10 +1,11 @@
 describe('Save', () => {
+  const key = Cypress.env('env').cypress_api_key
   beforeEach(() => {
     cy.visit('https://outfit-forecast.vercel.app')
   })
 
   it('should be able to save and unsave', () => {
-    cy.intercept('https://maps.googleapis.com/maps/api/geocode/json?address=NY&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=NY&key=${key}`, {
       fixture: 'NYgeocode'
     }).as('getNYgeo')
 
@@ -12,7 +13,7 @@ describe('Save', () => {
       fixture: 'NYweather'
     }).as('getNYweather')
 
-    cy.intercept('https://maps.googleapis.com/maps/api/geocode/json?address=Beijing&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=Beijing&key=${key}`, {
       fixture: 'BeijingGeocode'
     }).as('getPKgeo')
 

@@ -1,4 +1,5 @@
 describe('Home Page', () => {
+  const key = Cypress.env('env').cypress_api_key
   beforeEach(() => {
     cy.visit('https://outfit-forecast.vercel.app')
   })
@@ -15,7 +16,7 @@ describe('Home Page', () => {
   })
 
   it('should be able to search', () => {
-    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=SF&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw`, {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=SF&key=${key}`, {
         fixture: 'SFGeocode.json'
     }).as('getSFgeo')
 
@@ -23,7 +24,7 @@ describe('Home Page', () => {
       fixture: 'SFweather.json'
     }).as('getSFweather')
 
-    cy.intercept('https://maps.googleapis.com/maps/api/geocode/json?address=LA&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=LA&key=${key}`, {
       fixture: 'LAgeocode.json'
     }).as('getLAgeo')
 
