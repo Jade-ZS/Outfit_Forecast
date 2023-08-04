@@ -1,4 +1,5 @@
 import './WeatherCard.css';
+import PropTypes from 'prop-types'; 
 
 export default function WeatherCard({result}) {
   return (
@@ -19,4 +20,8 @@ export default function WeatherCard({result}) {
       </div>
     </div>
   )
+}
+
+WeatherCard.propTypes = {
+  result: PropTypes.object
 }

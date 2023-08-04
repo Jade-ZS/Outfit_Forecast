@@ -1,0 +1,44 @@
+{
+  "coord": {
+      "lon": -122.4194,
+      "lat": 37.7749
+  },
+  "weather": [
+      {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04d"
+      }
+  ],
+  "base": "stations",
+  "main": {
+      "temp": 290.22,
+      "feels_like": 290.25,
+      "temp_min": 286.94,
+      "temp_max": 297.75,
+      "pressure": 1018,
+      "humidity": 87
+  },
+  "visibility": 10000,
+  "wind": {
+      "speed": 8.75,
+      "deg": 280,
+      "gust": 12.86
+  },
+  "clouds": {
+      "all": 100
+  },
+  "dt": 1691106740,
+  "sys": {
+      "type": 2,
+      "id": 2017837,
+      "country": "US",
+      "sunrise": 1691068483,
+      "sunset": 1691119016
+  },
+  "timezone": -25200,
+  "id": 5391959,
+  "name": "San Francisco",
+  "cod": 200
+}

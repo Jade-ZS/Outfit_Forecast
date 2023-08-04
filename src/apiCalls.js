@@ -20,18 +20,7 @@ const fetchGeocode = address => {
   })
 }
 
-const fetchIcon = iconCode => {
-  return fetch(`https://openweathermap.org/img/wn/${iconCode}@2x.png`)
-  .then(response => {
-    if(!response.ok) {
-      throw new Error('failed to get weather icon');
-    }
-    return response.json();
-  })
-};
-
 export {
   fetchWeather, 
   fetchGeocode,
-  fetchIcon,
 }
