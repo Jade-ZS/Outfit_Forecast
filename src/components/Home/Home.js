@@ -4,8 +4,9 @@ import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
+import PropTypes from 'prop-types'; 
 
-export default function Home({fetchErr, checkErr}) {
+export default function Home({checkErr}) {
   const submitRef = useRef();
 
   const [keyword, setKeyword] = useState('');
@@ -109,4 +110,8 @@ export default function Home({fetchErr, checkErr}) {
       </div>
     </div>
   );
+}
+
+Home.propTypes = {
+  checkErr: PropTypes.func
 }

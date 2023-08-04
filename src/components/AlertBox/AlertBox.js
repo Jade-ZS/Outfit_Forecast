@@ -1,4 +1,5 @@
 import './AlertBox.css';
+import PropTypes from 'prop-types'; 
 
 export default function AlertBox({close, message, handleClose}) {
  
@@ -15,3 +16,9 @@ export default function AlertBox({close, message, handleClose}) {
     </div>
   )
 }
+
+AlertBox.propTypes = {
+  close: PropTypes.bool,
+  message: PropTypes.string,
+  handleClose: PropTypes.func
+};

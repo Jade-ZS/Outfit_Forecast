@@ -3,6 +3,7 @@ import WeatherCard from '../WeatherCard/WeatherCard';
 import { SaveContext } from '../../SaveContext';
 import { useState, useContext, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; 
 
 export default function Result({isSingleView, result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
@@ -50,4 +51,9 @@ export default function Result({isSingleView, result}) {
       }
     </div>
   )
+}
+
+Result.propTypes = {
+  isSingleView: PropTypes.bool,
+  result: PropTypes.object
 }
