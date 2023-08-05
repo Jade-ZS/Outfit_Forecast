@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Outfit Forecast is a feature-rich web application built with React that empowers fashion-conscious travelers to plan their outfits wisely based on real-time weather forecasts. By seamlessly integrating Google Maps Geocode API and OpenWeather's Weather API, users can easily search for weather information in different locations and save preferred destinations for instant weather updates.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Real-Time Weather Forecasts:** Utilize the power of OpenWeather's Weather API to fetch accurate and up-to-date weather data for any desired location.
 
-### `npm start`
+- **Location Search:** Users can conveniently search for weather information in various locations using Google Maps Geocode API, making trip planning a breeze.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Saved Locations:** Allow users to save and unsave preferred locations to receive instant weather updates without having to search repeatedly.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Responsive Design:** Outfit Forecast boasts a responsive user interface that adapts flawlessly to different devices, ensuring a seamless experience across smartphones, tablets, and desktops.
 
-### `npm test`
+- **Error Handling:** Implemented an error handling page to provide users with a friendly interface in case of any unexpected issues.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Cypress Testing:** Comprehensive end-to-end testing with Cypress ensures app reliability and robustness.
 
-### `npm run build`
+## Preview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+The Outfit Forecast app is deployed using Vercel and is accessible at [https://vercel.com/jade-zs/outfit-forecast](https://vercel.com/jade-zs/outfit-forecast).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Future Plans
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As part of future development, I plan to create a backend app to support personalized clothing recommendations based on different weather conditions. Although currently, a fashion API with free access is unavailable, the backend app will allow users to receive customized cloth recommendations to make their travel experience even more delightful.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
