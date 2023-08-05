@@ -46,7 +46,25 @@ a {
 }
 
 @media screen and (orientation: portrait) {
+  .home-page {
+    gap: 5vh !important;
+  }
+  .home-page .view-saved-button {
+    position: fixed;
+    left: 40%;
+    top: 3%;
+  }
+
+  .home-page input {
+    margin-top: 6vh;
+  }
+
+  .search-input {
+    width: 60vw !important;
+  }
+
   .welcome {
+    margin-top: 8vh;
     gap: 0 !important;
     flex-direction: column;
   }
@@ -102,8 +120,11 @@ a {
 
   .city-name {
     width: 80vw !important;
-    height: 15vh !important;
     text-align: center;
+  }
+
+  .saved-card .city-name {
+    height: 15vh !important;
   }
 
 }
