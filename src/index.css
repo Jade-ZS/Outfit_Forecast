@@ -102,7 +102,7 @@ a {
 
   .cloth-img {
     height: 30vh !important;
-    border-radius: 600px !important;
+    margin-top: 3vh;
   }
 
   .empty-saves-message {
