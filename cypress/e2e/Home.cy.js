@@ -68,7 +68,7 @@ describe('Home Page', () => {
   })
 
   it('should be alerted when search input is invalid', () => {
-    cy.intercept(' https://maps.googleapis.com/maps/api/geocode/json?address=jjjjjj&key=AIzaSyB8w7Qq-8kROMbGAPCjdfp2SiY4cAyYXdw', {
+    cy.intercept(`https://maps.googleapis.com/maps/api/geocode/json?address=jjjjjj&key=${key}`, {
       body: {
         "results": [],
         "status": "ZERO_RESULTS"
