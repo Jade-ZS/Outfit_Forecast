@@ -18,11 +18,41 @@ Outfit Forecast is a feature-rich web application built with React that empowers
 
 ## Preview
 
-
+![Outfit Forecast App Preview](link_to_your_app_preview.gif)
 
 ## Deployment
 
 The Outfit Forecast app is deployed using Vercel and is accessible at [https://vercel.com/jade-zs/outfit-forecast](https://vercel.com/jade-zs/outfit-forecast).
+
+## Installation
+
+To run the Outfit Forecast app locally on your machine, follow these steps:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/Jade-ZS/Outfit_Forecast.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd Outfit_Forecast
+```
+
+3. Install the required dependencies using npm:
+
+```bash
+npm install
+```
+
+4. Start the development server:
+
+```bash
+npm start
+```
+
+5. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
 ## Future Plans
 
