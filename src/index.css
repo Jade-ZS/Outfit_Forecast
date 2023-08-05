@@ -107,6 +107,8 @@ a {
 
   .empty-saves-message {
     text-align: center;
+    width: 80vw !important;
+    margin-left: 8% !important;
   }
   
   .savedCards {
