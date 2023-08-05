@@ -61,4 +61,30 @@ a {
     margin-top: -5vh;
     height: 40vh !important;
   }
+
+  .result-container {
+    width: 80vw !important;
+  }
+
+  .result-display {
+    flex-direction: column;
+  }
+
+  .city {
+    margin-top: 3vh;
+    margin-left: 0 !important;
+    height: 20vh !important;
+    padding: 0 !important;
+    width: 50vw !important;
+  }
+
+  .city-icon {
+    height: 10vh !important;
+  }
+
+  .cloth-img {
+    height: 30vh !important;
+    border-radius: 600px !important;
+  }
+
 }
