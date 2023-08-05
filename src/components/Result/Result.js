@@ -1,23 +1,19 @@
 import './Result.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import { SaveContext } from '../../SaveContext';
-import { useState, useContext, useEffect, useMemo } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 
 export default function Result({isSingleView, result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
-  let location = useMemo(() => {
-    if (result) {
-      return  {
-        ...result.coord, 
-        name:result.name, 
-        country:result.sys.country, 
-        id:result.name+result.sys.country
-      };
-    }
-  }, [result])
+  let location = result && {
+    ...result.coord, 
+    name:result.name, 
+    country:result.sys.country, 
+    id:result.name+result.sys.country
+  };
 
   useEffect(() => {
     const checkIfSaved = () => saves.some(element => JSON.stringify(element) === JSON.stringify(location));
