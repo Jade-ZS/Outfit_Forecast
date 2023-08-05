@@ -49,16 +49,15 @@ a {
   .home-page {
     gap: 5vh !important;
   }
-  .home-page .view-saved-button {
-    position: fixed;
-    left: 40%;
-    top: 3%;
-  }
 
   .home-page input {
     margin-top: 6vh;
   }
 
+  .search-container {
+    flex-direction: column;
+  }
+  
   .search-input {
     width: 60vw !important;
   }
