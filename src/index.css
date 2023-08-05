@@ -87,4 +87,23 @@ a {
     border-radius: 600px !important;
   }
 
+  .empty-saves-message {
+    text-align: center;
+  }
+  
+  .savedCards {
+    flex-direction: column;
+    margin-top: 2rem !important;
+  }
+
+  .saved-card {
+    margin-top: 0 !important;
+  }
+
+  .city-name {
+    width: 80vw !important;
+    height: 15vh !important;
+    text-align: center;
+  }
+
 }
