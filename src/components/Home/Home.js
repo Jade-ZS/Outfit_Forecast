@@ -89,14 +89,16 @@ export default function Home({checkErr}) {
 
   return(
     <div className='home-page'>
-      <div className='search-bar'>
+      <div className='search-container'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
           <img 
             className={`view-saved-button ${!close && 'noHover'}`}
             src={require('../../assets/view-saved.png')}/>
         </Link>
-        <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-        <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
+        <div className='search-bar'>
+          <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
+          <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
+        </div>
       </div>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
