@@ -66,6 +66,26 @@ npm start
 
 7. Open your web browser and navigate to `http://localhost:3000` to access the app.
 
+## Testing
+To run Cypress end-to-end tests for the app, follow these steps:
+
+1. In a new terminal window, navigate to the project directory.
+
+2. Create a `cypress.env.json` file in your root directory and add the following lines:
+```
+{
+  "env": {
+    "cypress_api_key" : "Your_Api_Keys_Here"
+  }
+}
+```
+3. Run the Cypress tests:
+```
+npm run cypress
+```
+
+4. Cypress will launch. Choose `End to End Test` and `Google Chrome`.  Cypress will display a list of available tests. Click on a test to run it in the browser.
+
 ## Future Plans
 
 As part of future development, I plan to create a backend app to support personalized clothing recommendations based on different weather conditions. I haven't been able to find a fashion API with free access. The backend app will allow users to receive customized weather based cloth recommendations to make their travel experience even more delightful.
