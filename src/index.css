@@ -44,3 +44,21 @@ a {
     background-position: 0%;
   }
 }
+
+@media screen and (orientation: portrait) {
+  .welcome {
+    gap: 0 !important;
+    flex-direction: column;
+  }
+
+  .welcome p {
+    margin-top: 10vh;
+    order: 1;
+  }
+
+  .welcome-rabbits {
+    order: 2;
+    margin-top: -5vh;
+    height: 40vh !important;
+  }
+}
