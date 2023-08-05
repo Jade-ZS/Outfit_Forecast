@@ -44,3 +44,89 @@ a {
     background-position: 0%;
   }
 }
+
+@media screen and (orientation: portrait) {
+  .home-page {
+    gap: 5vh !important;
+  }
+  .home-page .view-saved-button {
+    position: fixed;
+    left: 40%;
+    top: 3%;
+  }
+
+  .home-page input {
+    margin-top: 6vh;
+  }
+
+  .search-input {
+    width: 60vw !important;
+  }
+
+  .welcome {
+    margin-top: 8vh;
+    gap: 0 !important;
+    flex-direction: column;
+  }
+
+  .welcome p {
+    margin-top: 10vh;
+    order: 1;
+  }
+
+  .welcome-rabbits {
+    order: 2;
+    margin-top: -5vh;
+    height: 40vh !important;
+  }
+
+  .result-container {
+    width: 80vw !important;
+  }
+
+  .result-display {
+    flex-direction: column;
+  }
+
+  .city {
+    margin-top: 3vh;
+    margin-left: 0 !important;
+    height: 20vh !important;
+    padding: 0 !important;
+    width: 50vw !important;
+  }
+
+  .city-icon {
+    height: 10vh !important;
+  }
+
+  .cloth-img {
+    height: 30vh !important;
+    margin-top: 3vh;
+  }
+
+  .empty-saves-message {
+    text-align: center;
+    width: 80vw !important;
+    margin-left: 8% !important;
+  }
+  
+  .savedCards {
+    flex-direction: column;
+    margin-top: 2rem !important;
+  }
+
+  .saved-card {
+    margin-top: 0 !important;
+  }
+
+  .city-name {
+    width: 80vw !important;
+    text-align: center;
+  }
+
+  .saved-card .city-name {
+    height: 15vh !important;
+  }
+
+}
