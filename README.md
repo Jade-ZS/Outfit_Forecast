@@ -1,3 +1,5 @@
+# Outfit Forecast
+
 ## Description
 
 Outfit Forecast is a feature-rich web application built with React that empowers fashion-conscious travelers to plan their outfits wisely based on real-time weather forecasts. By seamlessly integrating Google Maps Geocode API and OpenWeather's Weather API, users can easily search for weather information in different locations and save preferred destinations for instant weather updates.
