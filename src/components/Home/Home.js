@@ -92,7 +92,6 @@ export default function Home({checkErr}) {
       <div className='search-bar'>
         <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
           <img 
-            alt='save button'
             className={`view-saved-button ${!close && 'noHover'}`}
             src={require('../../assets/view-saved.png')}/>
         </Link>
@@ -102,7 +101,7 @@ export default function Home({checkErr}) {
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
         <div className={`welcome  ${result && 'hidden'}`}>
-          <img alt='welcome rabbits' className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
+          <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
         {isValid && <Result isSingleView={false} result={result}/>}
