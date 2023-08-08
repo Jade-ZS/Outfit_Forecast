@@ -27,6 +27,13 @@ export default function Home({checkErr}) {
     setResult();
   }
 
+  const setAlertBox = (text) => {
+    setIsValid(false);
+    setClose(false);
+    setResult();
+    setMessage(text)
+  }
+
   useEffect(() => {
     if(!isValid && ifSubmit) {
       setClose(false);
@@ -37,10 +44,7 @@ export default function Home({checkErr}) {
     try {
       const geocode = await fetchGeocode(keyword)
       if(!geocode.results.length) {
-        setIsValid(false);
-        setClose(false);
-        setResult();
-        setMessage('invalid address!!!!!');
+        setAlertBox('invalid address!');
         return 'invalid address';
       } 
       setIsValid(true);
@@ -65,10 +69,7 @@ export default function Home({checkErr}) {
   const handleSubmit = async () => {
     setIfSubmit(true);
     if(!keyword.length) {
-      setIsValid(false);
-      setClose(false);
-      setMessage('This field is required');
-      setResult();
+      setAlertBox('This field is required');
       return;
     }
     const geocode = await getGeocode(keyword);
