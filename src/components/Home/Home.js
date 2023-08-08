@@ -33,12 +33,6 @@ export default function Home({checkErr}) {
     setResult();
     setMessage(text)
   }
-
-  useEffect(() => {
-    if(!isValid && ifSubmit) {
-      setClose(false);
-    } 
-  }, [ifSubmit, isValid])
   
   const getGeocode = async keyword => {
     try {
