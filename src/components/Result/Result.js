@@ -18,7 +18,7 @@ export default function Result({isSingleView, result, isLoadingSingle}) {
   useEffect(() => {
     const checkIfSaved = () => saves.some(element => JSON.stringify(element) === JSON.stringify(location));
     setIsSaved(checkIfSaved());
-  }, [saves, location, isSaved])
+  }, [saves, location])
 
   const handleSaveClick = () => isSaved ? deleteSave(location) : addSave(location);
 

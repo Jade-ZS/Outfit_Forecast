@@ -32,7 +32,6 @@ export default function SingleView() {
       setIsLoadingSingle(true);
       const cityName = parseName(id);
       fetchGeocode(cityName)
-        .then(response => response.results[0].geometry.location)
         .then(async geocode => await fetchWeather(geocode.lat, geocode.lng))
         .then(weather => {
           setIsLoadingSingle(false)

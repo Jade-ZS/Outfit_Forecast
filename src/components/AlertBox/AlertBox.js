@@ -2,6 +2,8 @@ import './AlertBox.css';
 import PropTypes from 'prop-types'; 
 
 export default function AlertBox({close, message, handleClose}) {
+
+  console.log('message: ', message)
  
   return (
     <div className={`alert-box ${close && 'hidden'}`}>
@@ -17,8 +19,8 @@ export default function AlertBox({close, message, handleClose}) {
   )
 }
 
-AlertBox.propTypes = {
-  close: PropTypes.bool,
-  message: PropTypes.string,
-  handleClose: PropTypes.func
-};
+// AlertBox.propTypes = {
+//   close: PropTypes.bool,
+//   message: PropTypes.string,
+//   handleClose: PropTypes.func
+// };
