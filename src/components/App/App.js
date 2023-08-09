@@ -6,8 +6,8 @@ import NotFound from '../NotFound/NotFound';
 import Saves from '../Saves/Saves';
 import SingleView from '../SingleView/SingleView';
 import { SaveContext } from '../../SaveContext';
-// import { UnitContext } from '../../UnitContext';
-import { FtoC, CtoF } from '../../convertUnit';
+import { UnitContext } from '../../UnitContext';
+import { CtoF } from '../../convertUnit';
 
 function App() {
   const [fetchErr, setFetchErr] = useState(false);
@@ -23,9 +23,10 @@ function App() {
   return (
     <div>
       <SaveContext.Provider value={{saves, addSave, deleteSave}}>
-        {/* <UnitContext.Provider value={{unit, setUnit}}> */}
+        <UnitContext.Provider value={{unit, CtoF}}>
           <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
           <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
+          {console.log('App unit: ', unit)}
           <Routes>
             <Route path='/' element={<Home checkErr={checkErr}/>} />
             <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
@@ -35,7 +36,7 @@ function App() {
             </Route>
             <Route path='*' element={<NotFound />} />
           </Routes>
-        {/* </UnitContext.Provider> */}
+        </UnitContext.Provider>
       </SaveContext.Provider>
     </div>
   );
