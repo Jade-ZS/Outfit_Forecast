@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-export default function Result({isSingleView, result, isLoading}) {
+export default function Result({isSingleView, result}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
   let location = result && {
@@ -38,7 +38,6 @@ export default function Result({isSingleView, result, isLoading}) {
         </div>
 
         <div className='result-display'>
-          {isLoading ? <LoadingSpinner /> : 
           <>
             <WeatherCard result={result}/>
             <img 
@@ -46,7 +45,6 @@ export default function Result({isSingleView, result, isLoading}) {
               src={require('../../assets/autum-sweaters.JPG')} 
               alt='sweaters'/>
           </>
-          }
         </div>
       </>
       }
@@ -56,5 +54,5 @@ export default function Result({isSingleView, result, isLoading}) {
 
 Result.propTypes = {
   isSingleView: PropTypes.bool,
-  result: PropTypes.object 
+  // result: PropTypes.object 
 }

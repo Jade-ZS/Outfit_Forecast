@@ -7,7 +7,6 @@ export default function WeatherCard({result}) {
   const { unit, CtoF } = useContext(UnitContext);
 
   const getTemp = () => {
-    console.log('unit: ', unit)
     if (unit === 'F') {
       return CtoF(result.main.temp);
     } else {

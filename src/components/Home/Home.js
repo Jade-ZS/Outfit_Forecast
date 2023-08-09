@@ -10,8 +10,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default function Home({checkErr}) {
   const submitRef = useRef();
-  const { isLoading, setIsLoading} = useContext(SaveContext);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
