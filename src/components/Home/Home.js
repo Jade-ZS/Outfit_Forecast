@@ -6,6 +6,7 @@ import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
+import Forecast from '../Forecast/Forecast';
 
 export default function Home({checkErr}) {
   const handleClose = () => setClose(true);
@@ -90,7 +91,7 @@ export default function Home({checkErr}) {
           <p>Let's explore weather!</p>
         </div>
         }
-        {isValid && <Result isSingleView={false} result={weather}/>}
+        {isValid && <Result isSingleView={false} result={weather} />}
       </div>
     </div>
   );

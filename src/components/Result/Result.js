@@ -5,14 +5,14 @@ import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 
-export default function Result({isSingleView, result, isLoadingSingle}) {
+export default function Result({isSingleView, weather, isLoadingSingle}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
-  let location = result && {
-    ...result.coord, 
-    name:result.name, 
-    country:result.sys.country, 
-    id:result.name+result.sys.country
+  let location = weather && {
+    ...weather.coord, 
+    name:weather.name, 
+    country:weather.sys.country, 
+    id:weather.name+weather.sys.country
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Result({isSingleView, result, isLoadingSingle}) {
 
   return (
     <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
-      {result && 
+      {weather && 
       <>
         <div className='button-wrapper'>
           <img 
@@ -38,7 +38,7 @@ export default function Result({isSingleView, result, isLoadingSingle}) {
 
         <div className='result-display'>
           <>
-            <WeatherCard result={result}/>
+            <WeatherCard weather={weather}/>
             <img 
               className='cloth-img' 
               src={require('../../assets/autum-sweaters.JPG')} 
