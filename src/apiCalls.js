@@ -27,7 +27,14 @@ const fetchGeocode = address => {
         throw new Error('Failed to fetch geocode');
       }
       return response.json();
-  })
+    })
+    .then(data => {
+      if(!data.results.length) {
+        return 'invalid address!';
+      } 
+      return data.results[0].geometry.location
+    })
+
 }
 
 export {

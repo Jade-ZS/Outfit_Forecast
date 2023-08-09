@@ -17,8 +17,8 @@ export default function AlertBox({close, message, handleClose}) {
   )
 }
 
-AlertBox.propTypes = {
-  close: PropTypes.bool,
-  message: PropTypes.string,
-  handleClose: PropTypes.func
-};
+// AlertBox.propTypes = {
+//   close: PropTypes.bool,
+//   message: PropTypes.string,
+//   handleClose: PropTypes.func
+// };

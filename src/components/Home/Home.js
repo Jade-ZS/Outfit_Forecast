@@ -19,11 +19,15 @@ export default function Home({checkErr}) {
   const [close, setClose] = useState(true);
   const [message, setMessage] = useState('');
 
-  const clearForm = () => {
-    setKeyword('');
+  const closeAlertBox = () => {
     setIsValid(true);
     setClose(true);
     setMessage('');
+  }
+
+  const clearForm = () => {
+    setKeyword('');
+    closeAlertBox();
     setIfSubmit(false);
     setWeather();
   }
@@ -38,24 +42,25 @@ export default function Home({checkErr}) {
   const getGeocode = async keyword => {
     try {
       const geocode = await fetchGeocode(keyword)
-      if(!geocode.results.length) {
-        setAlertBox('invalid address!');
-        return 'invalid address';
-      } 
-      setIsValid(true);
-      setClose(true);
-      return geocode.results[0].geometry.location;
+      if(geocode === 'invalid address!') {
+        setAlertBox(geocode);
+      } else {
+        closeAlertBox();
+      }
+      return geocode;
     } catch {
       checkErr(true);
     }
   }
 
   const getWeather = async geocode => {
-    const { lat, lng } = geocode;
     try {
-      checkErr(false);
-      const weather = await fetchWeather(lat, lng);
-      return weather;
+      if(typeof geocode === 'object') {
+        const { lat, lng } = geocode;
+        checkErr(false);
+        const weather = await fetchWeather(lat, lng);
+        return weather;
+      }
     } catch {
       await checkErr(true);
     }
