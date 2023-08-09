@@ -56,13 +56,13 @@ export default function Home({checkErr}) {
   const getWeather = async geocode => {
     try {
       if(typeof geocode === 'object') {
-        const { lat, lng } = geocode;
         checkErr(false);
+        const { lat, lng } = geocode;
         const weather = await fetchWeather(lat, lng);
         return weather;
       }
     } catch {
-      await checkErr(true);
+      checkErr(true);
     }
   }
 
@@ -70,18 +70,16 @@ export default function Home({checkErr}) {
     setIfSubmit(true);
     if(!keyword.length) {
       setAlertBox('This field is required');
-      return;
-    }
-    const geocode = await getGeocode(keyword);
-    if (typeof geocode !== 'string') {
+    } else {
+      const geocode = await getGeocode(keyword);
       clearForm();
       setIsLoading(true)
       const weather = await getWeather(geocode)
       setWeather(weather);
       setIsLoading(false)
-      return weather;
     }
   }
+
   const handleChange = e => setKeyword(e.target.value);
   const handleKeyDown = e => {
     if (e.code === 'Enter') {

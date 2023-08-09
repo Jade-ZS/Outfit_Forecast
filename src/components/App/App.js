@@ -14,7 +14,6 @@ function App() {
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
-  const checkErr = (value) => setFetchErr(value); 
   const addSave = location => setSaves([...saves, location]);
   const deleteSave = location => {
     const updatedSaves = saves.filter(element => JSON.stringify(element) !== JSON.stringify(location))
@@ -28,8 +27,8 @@ function App() {
           <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
           <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
             <Routes>
-              <Route path='/' element={<Home checkErr={checkErr} />} />
-              <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
+              <Route path='/' element={<Home checkErr={setFetchErr} />} />
+              <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={setFetchErr}/>} />
               <Route path='/saved'>
                 <Route index element={<Saves />}/>
                 <Route path=':id' element={<SingleView />} />
