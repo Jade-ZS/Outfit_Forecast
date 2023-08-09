@@ -7,6 +7,7 @@ import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
 import { SaveContext } from '../../SaveContext'; 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function Home({checkErr}) {
   const submitRef = useRef();
@@ -35,6 +36,7 @@ export default function Home({checkErr}) {
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
+    console.log('open')
     setWeather();
     setMessage(text)
   }
@@ -90,17 +92,7 @@ export default function Home({checkErr}) {
 
   return(
     <div className='home-page'>
-      <div className='search-container'>
-        <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
-          <img 
-            className={`view-saved-button ${!close && 'noHover'}`}
-            src={require('../../assets/view-saved.png')}/>
-        </Link>
-        <div className='search-bar'>
-          <input disabled={!close} className='search-input' value={keyword} placeholder='search by city, address or zipcode' onChange={handleChange} onKeyDown={handleKeyDown}/>
-          <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
-        </div>
-      </div>
+      <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
       {!isValid && <AlertBox close={close} handleClose={setClose} message={message}/>}
       <div className='result-container'>
         {isLoading ? <LoadingSpinner /> :
