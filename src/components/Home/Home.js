@@ -1,14 +1,16 @@
 import './Home.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
+import { SaveContext } from '../../SaveContext'; 
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default function Home({checkErr}) {
   const submitRef = useRef();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -27,20 +29,18 @@ export default function Home({checkErr}) {
     setResult();
   }
 
-  useEffect(() => {
-    if(!isValid && ifSubmit) {
-      setClose(false);
-    } 
-  }, [ifSubmit, isValid])
+  const setAlertBox = (text) => {
+    setIsValid(false);
+    setClose(false);
+    setResult();
+    setMessage(text)
+  }
   
   const getGeocode = async keyword => {
     try {
       const geocode = await fetchGeocode(keyword)
       if(!geocode.results.length) {
-        setIsValid(false);
-        setClose(false);
-        setResult();
-        setMessage('invalid address!!!!!');
+        setAlertBox('invalid address!');
         return 'invalid address';
       } 
       setIsValid(true);
@@ -65,17 +65,16 @@ export default function Home({checkErr}) {
   const handleSubmit = async () => {
     setIfSubmit(true);
     if(!keyword.length) {
-      setIsValid(false);
-      setClose(false);
-      setMessage('This field is required');
-      setResult();
+      setAlertBox('This field is required');
       return;
     }
     const geocode = await getGeocode(keyword);
     if (typeof geocode !== 'string') {
       clearForm();
+      setIsLoading(true)
       const weather = await getWeather(geocode)
       addWeather(weather);
+      setIsLoading(false)
       return result;
     }
   }
@@ -102,10 +101,12 @@ export default function Home({checkErr}) {
       </div>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
+        {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${result && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
+        }
         {isValid && <Result isSingleView={false} result={result}/>}
       </div>
     </div>

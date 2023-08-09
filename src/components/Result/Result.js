@@ -5,7 +5,7 @@ import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 
-export default function Result({isSingleView, result}) {
+export default function Result({isSingleView, result, isLoadingSingle}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
   let location = result && {
@@ -23,7 +23,7 @@ export default function Result({isSingleView, result}) {
   const handleSaveClick = () => isSaved ? deleteSave(location) : addSave(location);
 
   return (
-    <div className='result-card'>
+    <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
       {result && 
       <>
         <div className='button-wrapper'>
@@ -37,11 +37,13 @@ export default function Result({isSingleView, result}) {
         </div>
 
         <div className='result-display'>
-          <WeatherCard result={result}/>
-          <img 
-            className='cloth-img' 
-            src={require('../../assets/autum-sweaters.JPG')} 
-            alt='sweaters'/>
+          <>
+            <WeatherCard result={result}/>
+            <img 
+              className='cloth-img' 
+              src={require('../../assets/autum-sweaters.JPG')} 
+              alt='sweaters'/>
+          </>
         </div>
       </>
       }
@@ -51,5 +53,5 @@ export default function Result({isSingleView, result}) {
 
 Result.propTypes = {
   isSingleView: PropTypes.bool,
-  result: PropTypes.object
+  // result: PropTypes.object 
 }
