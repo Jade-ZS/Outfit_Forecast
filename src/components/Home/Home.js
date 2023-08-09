@@ -10,6 +10,7 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
 
 export default function Home({checkErr}) {
+  const handleClose = () => setClose(true);
   const submitRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -36,7 +37,8 @@ export default function Home({checkErr}) {
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    console.log('show alertbox')
+    console.log('alertbox close: ', close)
+    console.log('isvalid: ', isValid)
     setWeather();
     setMessage(text)
   }
@@ -57,8 +59,9 @@ export default function Home({checkErr}) {
 
   const getWeather = async geocode => {
     try {
-      if(typeof geocode === 'object') {
+      if(geocode !== 'invalid address!') {
         checkErr(false);
+        clearForm();
         const { lat, lng } = geocode;
         const weather = await fetchWeather(lat, lng);
         return weather;
@@ -73,9 +76,8 @@ export default function Home({checkErr}) {
     if(!keyword.length) {
       setAlertBox('This field is required');
     } else {
-      const geocode = await getGeocode(keyword);
-      clearForm();
       setIsLoading(true)
+      const geocode = await getGeocode(keyword);
       const weather = await getWeather(geocode)
       setWeather(weather);
       setIsLoading(false)
@@ -93,7 +95,7 @@ export default function Home({checkErr}) {
   return(
     <div className='home-page'>
       <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
-      {!isValid && <AlertBox close={close} handleClose={setClose} message={message}/>}
+      {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
         {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${weather && 'hidden'}`}>
