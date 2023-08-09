@@ -25,15 +25,13 @@ export default function Home({checkErr}) {
   }
 
   const clearForm = () => {
-    setKeyword('');
     closeAlertBox();
-    setWeather();
+    setKeyword('');
   }
 
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    setWeather();
     setMessage(text)
   }
   
