@@ -4,9 +4,8 @@ import { SaveContext } from '../../SaveContext';
 import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-export default function Result({isSingleView, result}) {
+export default function Result({isSingleView, result, isLoadingSingle}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
   let location = result && {
@@ -24,7 +23,7 @@ export default function Result({isSingleView, result}) {
   const handleSaveClick = () => isSaved ? deleteSave(location) : addSave(location);
 
   return (
-    <div className='result-card'>
+    <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
       {result && 
       <>
         <div className='button-wrapper'>

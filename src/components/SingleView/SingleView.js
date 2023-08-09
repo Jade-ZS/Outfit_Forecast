@@ -7,14 +7,12 @@ import './SingleView.css';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default function SingleView() {
-  console.log('singleview--------------------------------------------------')
   const navigate = useNavigate();
   const {id} = useParams();
-  console.log(id)
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
   const selectedSavedCard = saves.filter(element => element.id === id)[0];
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingSingle, setIsLoadingSingle] = useState(false)
   
   const parseName = id => {
     return id.slice(0, id.length-2);
@@ -22,29 +20,22 @@ export default function SingleView() {
 
   useEffect(() => {
     if (selectedSavedCard) {
-      setIsLoading(true);
+      setIsLoadingSingle(true);
       const { lon, lat } = selectedSavedCard;
       
       fetchWeather(lat, lon)
-      .then(res => {
-        console.log('before isLoading: ', isLoading)
-        return res
-      })
       .then(res => setWeather(res))
-      .then(() => {
-        setIsLoading(false)
-        console.log('after isLoading: ', isLoading)
-      })
+      .then(() => setIsLoadingSingle(false))
     }
 
     if (!selectedSavedCard && id) {
-      setIsLoading(true);
+      setIsLoadingSingle(true);
       const cityName = parseName(id);
       fetchGeocode(cityName)
         .then(response => response.results[0].geometry.location)
         .then(async geocode => await fetchWeather(geocode.lat, geocode.lng))
         .then(weather => {
-          setIsLoading(false)
+          setIsLoadingSingle(false)
           setWeather(weather)
         })
         .catch(() => navigate('/*'))
@@ -55,8 +46,8 @@ export default function SingleView() {
     <>
         <div className='single-view'>
          <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
-         {isLoading && <LoadingSpinner />}
-         <Result isSingleView={true} result={weather}/>
+         {isLoadingSingle && <LoadingSpinner />}
+         <Result isSingleView={true} result={weather} isLoadingSingle={isLoadingSingle}/>
         </div> 
     </>
   )
