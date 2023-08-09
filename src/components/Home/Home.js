@@ -32,7 +32,7 @@ export default function Home({checkErr}) {
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    setMessage(text)
+    setMessage(text);
   }
   
   const getGeocode = async keyword => {
@@ -65,9 +65,9 @@ export default function Home({checkErr}) {
     } else {
       setIsLoading(true)
       const geocode = await getGeocode(keyword);
-      const weather = await getWeather(geocode)
+      const weather = await getWeather(geocode);
       setWeather(weather);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
 
