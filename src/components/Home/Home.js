@@ -36,7 +36,7 @@ export default function Home({checkErr}) {
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    console.log('open')
+    console.log('show alertbox')
     setWeather();
     setMessage(text)
   }
