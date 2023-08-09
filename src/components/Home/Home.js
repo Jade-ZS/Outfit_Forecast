@@ -1,7 +1,7 @@
 import './Home.css';
 import { useState, useEffect, useRef, useContext } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
-import { fetchGeocode, fetchWeather } from '../../apiCalls';
+import { fetchGeocode, fetchWeather, fetchForecast } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
@@ -14,25 +14,24 @@ export default function Home({checkErr}) {
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
-  const [result, setResult] = useState();
+  const [weather, setWeather] = useState();
+  const [forecasat, setforecast] = useState({});
   const [close, setClose] = useState(true);
   const [message, setMessage] = useState('');
 
-  const addWeather = weather => setResult(weather);
-  const handleClose = () => setClose(true);
   const clearForm = () => {
     setKeyword('');
     setIsValid(true);
     setClose(true);
     setMessage('');
     setIfSubmit(false);
-    setResult();
+    setWeather();
   }
 
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    setResult();
+    setWeather();
     setMessage(text)
   }
   
@@ -73,9 +72,9 @@ export default function Home({checkErr}) {
       clearForm();
       setIsLoading(true)
       const weather = await getWeather(geocode)
-      addWeather(weather);
+      setWeather(weather);
       setIsLoading(false)
-      return result;
+      return weather;
     }
   }
   const handleChange = e => setKeyword(e.target.value);
@@ -99,15 +98,15 @@ export default function Home({checkErr}) {
           <Link to='/result'><input disabled={!close} ref={submitRef} type='submit' value='submit' onClick={handleSubmit}/></Link>
         </div>
       </div>
-      {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
+      {!isValid && <AlertBox close={close} handleClose={setClose} message={message}/>}
       <div className='result-container'>
         {isLoading ? <LoadingSpinner /> :
-        <div className={`welcome  ${result && 'hidden'}`}>
+        <div className={`welcome  ${weather && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
         }
-        {isValid && <Result isSingleView={false} result={result}/>}
+        {isValid && <Result isSingleView={false} result={weather}/>}
       </div>
     </div>
   );
