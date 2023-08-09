@@ -1,11 +1,9 @@
 import './Home.css';
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useRef } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather, fetchForecast } from '../../apiCalls';
-import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
-import { SaveContext } from '../../SaveContext'; 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -37,8 +35,6 @@ export default function Home({checkErr}) {
   const setAlertBox = (text) => {
     setIsValid(false);
     setClose(false);
-    console.log('alertbox close: ', close)
-    console.log('isvalid: ', isValid)
     setWeather();
     setMessage(text)
   }
@@ -46,11 +42,7 @@ export default function Home({checkErr}) {
   const getGeocode = async keyword => {
     try {
       const geocode = await fetchGeocode(keyword)
-      if(geocode === 'invalid address!') {
-        setAlertBox(geocode);
-      } else {
-        closeAlertBox();
-      }
+      if (geocode === 'invalid address!') setAlertBox(geocode);
       return geocode;
     } catch {
       checkErr(true);
