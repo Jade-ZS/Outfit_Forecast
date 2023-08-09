@@ -6,7 +6,7 @@ import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
-import Forecast from '../Forecast/Forecast';
+
 
 export default function Home({checkErr}) {
   const handleClose = () => setClose(true);
@@ -15,7 +15,7 @@ export default function Home({checkErr}) {
   const [keyword, setKeyword] = useState('');
   const [isValid, setIsValid] = useState(true);
   const [weather, setWeather] = useState();
-  const [forecasat, setforecast] = useState({});
+  const [forecast, setForecast] = useState({});
   const [close, setClose] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -60,6 +60,18 @@ export default function Home({checkErr}) {
     }
   }
 
+  const getForecast = async geocode => {
+    try {
+      if(geocode !== 'invalid address!') {
+        const { lat, lng } = geocode;
+        const forecast = await fetchForecast(lat, lng);
+        return forecast;
+      }
+    } catch {
+      checkErr(true);
+    }
+  }
+
   const handleSubmit = async () => {
     if(!keyword.length) {
       setAlertBox('This field is required');
@@ -67,7 +79,9 @@ export default function Home({checkErr}) {
       setIsLoading(true)
       const geocode = await getGeocode(keyword);
       const weather = await getWeather(geocode);
+      const forecast = await getForecast(geocode);
       setWeather(weather);
+      setForecast(forecast);
       setIsLoading(false);
     }
   }
@@ -91,7 +105,7 @@ export default function Home({checkErr}) {
           <p>Let's explore weather!</p>
         </div>
         }
-        {isValid && <Result isSingleView={false} result={weather} />}
+        {isValid && <Result forecast={forecast} isSingleView={false} weather={weather} />}
       </div>
     </div>
   );

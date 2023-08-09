@@ -4,8 +4,9 @@ import { SaveContext } from '../../SaveContext';
 import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
+import Forecast from '../Forecast/Forecast';
 
-export default function Result({isSingleView, weather, isLoadingSingle}) {
+export default function Result({forecast, isSingleView, weather, isLoadingSingle}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
   const [isSaved, setIsSaved] = useState(false);
   let location = weather && {
@@ -37,13 +38,14 @@ export default function Result({isSingleView, weather, isLoadingSingle}) {
         </div>
 
         <div className='result-display'>
-          <>
+          <div className='result-line'>
             <WeatherCard weather={weather}/>
             <img 
               className='cloth-img' 
               src={require('../../assets/autum-sweaters.JPG')} 
               alt='sweaters'/>
-          </>
+          </div>
+          <Forecast forecast={forecast}/>
         </div>
       </>
       }
