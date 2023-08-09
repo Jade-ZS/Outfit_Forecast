@@ -10,6 +10,7 @@ import { UnitContext } from '../../UnitContext';
 import { CtoF } from '../../convertUnit';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
@@ -22,20 +23,21 @@ function App() {
 
   return (
     <div>
-      <SaveContext.Provider value={{saves, addSave, deleteSave}}>
+      <SaveContext.Provider value={{saves, addSave, deleteSave, isLoading, setIsLoading}}>
         <UnitContext.Provider value={{unit, CtoF}}>
           <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
           <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
-          {console.log('App unit: ', unit)}
-          <Routes>
-            <Route path='/' element={<Home checkErr={checkErr}/>} />
-            <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
-            <Route path='/saved'>
-              <Route index element={<Saves />}/>
-              <Route path=':id' element={<SingleView />} />
-            </Route>
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+          {/* <LoadingContext value={{isLoading, setIsLoading}}> */}
+            <Routes>
+              <Route path='/' element={<Home checkErr={checkErr} />} />
+              <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={checkErr}/>} />
+              <Route path='/saved'>
+                <Route index element={<Saves />}/>
+                <Route path=':id' element={<SingleView />} />
+              </Route>
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          {/* </LoadingContext> */}
         </UnitContext.Provider>
       </SaveContext.Provider>
     </div>

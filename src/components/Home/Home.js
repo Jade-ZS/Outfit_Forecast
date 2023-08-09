@@ -1,13 +1,16 @@
 import './Home.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
+import { SaveContext } from '../../SaveContext'; 
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 export default function Home({checkErr}) {
   const submitRef = useRef();
+  const { isLoading, setIsLoading} = useContext(SaveContext);
 
   const [keyword, setKeyword] = useState('');
   const [ifSubmit, setIfSubmit] = useState(false);
@@ -69,8 +72,10 @@ export default function Home({checkErr}) {
     const geocode = await getGeocode(keyword);
     if (typeof geocode !== 'string') {
       clearForm();
+      setIsLoading(true)
       const weather = await getWeather(geocode)
       addWeather(weather);
+      setIsLoading(false)
       return result;
     }
   }
@@ -97,10 +102,12 @@ export default function Home({checkErr}) {
       </div>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
+        {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${result && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
+        }
         {isValid && <Result isSingleView={false} result={result}/>}
       </div>
     </div>
