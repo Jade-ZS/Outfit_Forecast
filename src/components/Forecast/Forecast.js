@@ -20,6 +20,9 @@ export default function Forecast({forecast}) {
                     alt='weather icon'
                     src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   />
+                  <label className='day'>{weekdays[index]}</label>
+                  <label classname='description'>{item.weather[0].description}</label>
+                  <label className='min-max'>{Math.round(item.main.temp_min)}&deg;C</label>
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
