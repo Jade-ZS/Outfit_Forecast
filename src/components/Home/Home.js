@@ -12,7 +12,6 @@ export default function Home({checkErr}) {
   const submitRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState('');
-  const [ifSubmit, setIfSubmit] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const [weather, setWeather] = useState();
   const [forecasat, setforecast] = useState({});
@@ -28,7 +27,6 @@ export default function Home({checkErr}) {
   const clearForm = () => {
     setKeyword('');
     closeAlertBox();
-    setIfSubmit(false);
     setWeather();
   }
 
@@ -64,7 +62,6 @@ export default function Home({checkErr}) {
   }
 
   const handleSubmit = async () => {
-    setIfSubmit(true);
     if(!keyword.length) {
       setAlertBox('This field is required');
     } else {
