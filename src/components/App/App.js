@@ -7,10 +7,9 @@ import Saves from '../Saves/Saves';
 import SingleView from '../SingleView/SingleView';
 import { SaveContext } from '../../SaveContext';
 import { UnitContext } from '../../UnitContext';
-import { CtoF } from '../../convertUnit';
 
 function App() {
-  // const [isLoading, setIsLoading] = useState(false);
+  const CtoF = temp => Math.round(temp * (9/5) + 32);
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
