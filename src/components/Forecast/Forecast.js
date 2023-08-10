@@ -47,15 +47,15 @@ export default function Forecast({forecast}) {
                 <div className='daily-details-grid'>
                   <div className='daily-details-grid-item'>
                     <label>Pressure:</label>
-                    <label>{item.main.pressure}</label>
+                    <label>{item.main.pressure} hPa</label>
                   </div>
                   <div className='daily-details-grid-item'>
                     <label>Humidity:&nbsp;</label>
-                    <label>{item.main.humidity}</label>
+                    <label>{item.main.humidity} %</label>
                   </div>
                   <div className='daily-details-grid-item'>
                     <label>Clouds:&nbsp;</label>
-                    <label>{item.clouds.all}</label>
+                    <label>{item.clouds.all} %</label>
                   </div>
                   <div className='daily-details-grid-item'>
                     <label>Wind Speed:&nbsp;</label>
