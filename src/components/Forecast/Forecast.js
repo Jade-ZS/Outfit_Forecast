@@ -6,13 +6,21 @@ import { UnitContext } from '../../UnitContext';
 export default function Forecast({forecast}) {
   const { unit, CtoF } = useContext(UnitContext);
   const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
   return (
     <div className='forecast-container'>
       <p>forecast section</p>
       <label>Daily</label>
       <Accordion allowZeroExpanded>
         {forecast.list.slice(0, 7).map((item, index) => {
-          let min_temp = Math.round(item.main.temp_min);
+          let minTemp = Math.round(item.main.temp_min);
+          let maxTemp = Math.round(item.main.temp_max);
+          const convertTemp = temp => {
+            let output;
+            unit === 'C' ? output = temp : CtoF(temp);
+            return output;
+          };
+
           return (
           <AccordionItem key={index}>
             <AccordionItemHeading>
@@ -24,7 +32,10 @@ export default function Forecast({forecast}) {
                   />
                   <label className='day'>{weekdays[index]}</label>
                   <label className='description'>{item.weather[0].description}</label>
-                  <label className='min-max'>{unit === 'C' ? min_temp : CtoF(min_temp)}&deg;{unit}</label>
+                  <label className='min-max'>
+                    {convertTemp(minTemp)}&deg;{unit} 
+                    {minTemp !== maxTemp && ` - ${convertTemp(maxTemp)}` + `\u{B0}${unit}`}
+                  </label>
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
