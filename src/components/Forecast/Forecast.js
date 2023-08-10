@@ -1,5 +1,4 @@
 import './Forecast.css';
-import { fetchForecast } from '../../apiCalls';
 import { useContext } from 'react';
 import { Accordion, AccordionItemHeading, AccordionItem, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion';
 import { UnitContext } from '../../UnitContext';
@@ -24,7 +23,7 @@ export default function Forecast({forecast}) {
                     src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
                   />
                   <label className='day'>{weekdays[index]}</label>
-                  <label classname='description'>{item.weather[0].description}</label>
+                  <label className='description'>{item.weather[0].description}</label>
                   <label className='min-max'>{unit === 'C' ? min_temp : CtoF(min_temp)}&deg;{unit}</label>
                 </div>
               </AccordionItemButton>

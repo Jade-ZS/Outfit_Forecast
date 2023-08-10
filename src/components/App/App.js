@@ -10,6 +10,8 @@ import { UnitContext } from '../../UnitContext';
 
 function App() {
   const CtoF = temp => Math.round(temp * (9/5) + 32);
+  const [weather, setWeather] = useState();
+  const [forecast, setForecast] = useState({});
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
@@ -18,6 +20,7 @@ function App() {
     const updatedSaves = saves.filter(element => JSON.stringify(element) !== JSON.stringify(location))
     setSaves(updatedSaves);
   };
+ 
 
   return (
     <div>
@@ -26,8 +29,8 @@ function App() {
           <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
           <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
             <Routes>
-              <Route path='/' element={<Home checkErr={setFetchErr} />} />
-              <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={setFetchErr}/>} />
+              <Route path='/' element={<Home checkErr={setFetchErr} weather={weather} setWeather={setWeather} forecast={forecast} setForecast={setForecast} />} />
+              <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={setFetchErr} weather={weather} setWeather={setWeather} forecast={forecast} setForecast={setForecast}/>} />
               <Route path='/saved'>
                 <Route index element={<Saves />}/>
                 <Route path=':id' element={<SingleView />} />

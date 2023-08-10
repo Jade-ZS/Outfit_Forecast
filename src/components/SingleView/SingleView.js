@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { SaveContext } from '../../SaveContext';
-import { fetchWeather, fetchGeocode } from '../../apiCalls';
+import { fetchWeather, fetchGeocode, fetchForecast } from '../../apiCalls';
 import Result from '../Result/Result';
 import './SingleView.css';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -11,6 +11,7 @@ export default function SingleView() {
   const {id} = useParams();
   const {saves} = useContext(SaveContext);
   const [weather, setWeather] = useState('');
+  const [forecast, setForecast] = useState();
   const selectedSavedCard = saves.filter(element => element.id === id)[0];
   const [isLoadingSingle, setIsLoadingSingle] = useState(false)
   
@@ -20,22 +21,48 @@ export default function SingleView() {
 
   useEffect(() => {
     if (selectedSavedCard) {
-      setIsLoadingSingle(true);
-      const { lon, lat } = selectedSavedCard;
+      // setIsLoadingSingle(true);
+      // const { lon, lat } = selectedSavedCard;
       
-      fetchWeather(lat, lon)
-      .then(res => setWeather(res))
-      .then(() => setIsLoadingSingle(false))
+      // fetchWeather(lat, lon)
+      // .then(res => setWeather(res))
+      // .then(() => setIsLoadingSingle(false))
+
+      // fetchForecast(lat, lon)
+      // .then(res => {
+      //   console.log(res)
+      //   setForecast(res)
+      // })
+      // .then(() => setIsLoadingSingle(false))
+
+      setIsLoadingSingle(true);
+      const cityName = parseName(id);
+      fetchGeocode(cityName)
+        .then(async geocode => { return ([
+          await fetchWeather(geocode.lat, geocode.lng),
+          await fetchForecast(geocode.lat, geocode.lng)
+        ])})
+        .then(data => {
+          setIsLoadingSingle(false)
+          setWeather(data[0])
+          setForecast(data[1])
+        })
+        .catch(() => navigate('/*'))
+
     }
 
     if (!selectedSavedCard && id) {
       setIsLoadingSingle(true);
       const cityName = parseName(id);
       fetchGeocode(cityName)
-        .then(async geocode => await fetchWeather(geocode.lat, geocode.lng))
-        .then(weather => {
+        .then(async geocode => { return ([
+          await fetchWeather(geocode.lat, geocode.lng),
+          await fetchForecast(geocode.lat, geocode.lng)
+        ])})
+        .then(data => {
           setIsLoadingSingle(false)
-          setWeather(weather)
+          setWeather(data[0])
+          setForecast(data[1])
         })
         .catch(() => navigate('/*'))
     }
@@ -46,7 +73,7 @@ export default function SingleView() {
         <div className='single-view'>
          <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
          {isLoadingSingle && <LoadingSpinner />}
-         <Result isSingleView={true} result={weather} isLoadingSingle={isLoadingSingle}/>
+         <Result forecast={forecast} isSingleView={true} weather={weather} isLoadingSingle={isLoadingSingle}/>
         </div> 
     </>
   )

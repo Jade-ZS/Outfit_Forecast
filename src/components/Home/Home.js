@@ -8,14 +8,14 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
 
 
-export default function Home({checkErr}) {
+export default function Home({checkErr, weather, setWeather, forecast, setForecast}) {
   const handleClose = () => setClose(true);
   const submitRef = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [keyword, setKeyword] = useState('');
   const [isValid, setIsValid] = useState(true);
-  const [weather, setWeather] = useState();
-  const [forecast, setForecast] = useState({});
+  // const [weather, setWeather] = useState();
+  // const [forecast, setForecast] = useState({});
   const [close, setClose] = useState(true);
   const [message, setMessage] = useState('');
 
