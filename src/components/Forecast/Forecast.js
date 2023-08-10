@@ -15,6 +15,7 @@ export default function Forecast({forecast}) {
         {forecast.list.slice(0, 7).map((item, index) => {
           let minTemp = Math.round(item.main.temp_min);
           let maxTemp = Math.round(item.main.temp_max);
+
           const convertTemp = temp => {
             let output;
             unit === 'C' ? output = temp : CtoF(temp);
@@ -22,25 +23,25 @@ export default function Forecast({forecast}) {
           };
 
           return (
-          <AccordionItem key={index}>
-            <AccordionItemHeading>
-              <AccordionItemButton>
-                <div className='daily-item'>
-                  <img 
-                    alt='weather icon'
-                    src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-                  />
-                  <label className='day'>{weekdays[index]}</label>
-                  <label className='description'>{item.weather[0].description}</label>
-                  <label className='min-max'>
-                    {convertTemp(minTemp)}&deg;{unit} 
-                    {minTemp !== maxTemp && ` - ${convertTemp(maxTemp)}` + `\u{B0}${unit}`}
-                  </label>
-                </div>
-              </AccordionItemButton>
-            </AccordionItemHeading>
-            <AccordionItemPanel></AccordionItemPanel>
-          </AccordionItem>
+            <AccordionItem key={index}>
+              <AccordionItemHeading>
+                <AccordionItemButton>
+                  <div className='daily-item'>
+                    <img 
+                      alt='weather icon'
+                      src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                    />
+                    <label className='day'>{weekdays[index]}&nbsp; </label>
+                    <label className='description'>{item.weather[0].description}&nbsp; </label>
+                    <label className='min-max'>
+                      {convertTemp(minTemp)}&deg;{unit} 
+                      {minTemp !== maxTemp && ` - ${convertTemp(maxTemp)}` + `\u{B0}${unit}`}
+                    </label>
+                  </div>
+                </AccordionItemButton>
+              </AccordionItemHeading>
+              <AccordionItemPanel></AccordionItemPanel>
+            </AccordionItem>
           );
         })}
       </Accordion>
