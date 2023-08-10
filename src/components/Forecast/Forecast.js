@@ -15,6 +15,7 @@ export default function Forecast({forecast}) {
         {forecast.list.slice(0, 7).map((item, index) => {
           let minTemp = Math.round(item.main.temp_min);
           let maxTemp = Math.round(item.main.temp_max);
+          let feelTemp = Math.round(item.main.feels_like);
 
           const convertTemp = temp => {
             if (unit === 'C') {
@@ -66,7 +67,7 @@ export default function Forecast({forecast}) {
                   </div>
                   <div className='daily-details-grid-item'>
                     <label>Feels like:&nbsp;</label>
-                    <label>{Math.round(item.main.feels_like)} &deg;C</label>
+                    <label>{convertTemp(feelTemp)} &deg;{unit}</label>
                   </div>
                 </div>
               </AccordionItemPanel>
