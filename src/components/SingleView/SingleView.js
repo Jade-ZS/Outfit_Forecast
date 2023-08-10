@@ -20,52 +20,19 @@ export default function SingleView() {
   }
 
   useEffect(() => {
-    if (selectedSavedCard) {
-      // setIsLoadingSingle(true);
-      // const { lon, lat } = selectedSavedCard;
-      
-      // fetchWeather(lat, lon)
-      // .then(res => setWeather(res))
-      // .then(() => setIsLoadingSingle(false))
-
-      // fetchForecast(lat, lon)
-      // .then(res => {
-      //   console.log(res)
-      //   setForecast(res)
-      // })
-      // .then(() => setIsLoadingSingle(false))
-
-      setIsLoadingSingle(true);
-      const cityName = parseName(id);
-      fetchGeocode(cityName)
-        .then(async geocode => { return ([
-          await fetchWeather(geocode.lat, geocode.lng),
-          await fetchForecast(geocode.lat, geocode.lng)
-        ])})
-        .then(data => {
-          setIsLoadingSingle(false)
-          setWeather(data[0])
-          setForecast(data[1])
-        })
-        .catch(() => navigate('/*'))
-
-    }
-
-    if (!selectedSavedCard && id) {
-      setIsLoadingSingle(true);
-      const cityName = parseName(id);
-      fetchGeocode(cityName)
-        .then(async geocode => { return ([
-          await fetchWeather(geocode.lat, geocode.lng),
-          await fetchForecast(geocode.lat, geocode.lng)
-        ])})
-        .then(data => {
-          setIsLoadingSingle(false)
-          setWeather(data[0])
-          setForecast(data[1])
-        })
-        .catch(() => navigate('/*'))
-    }
+    setIsLoadingSingle(true);
+    const cityName = parseName(id);
+    fetchGeocode(cityName)
+      .then(async geocode => { return ([
+        await fetchWeather(geocode.lat, geocode.lng),
+        await fetchForecast(geocode.lat, geocode.lng)
+      ])})
+      .then(data => {
+        setIsLoadingSingle(false)
+        setWeather(data[0])
+        setForecast(data[1])
+      })
+      .catch(() => navigate('/*'))
   }, [selectedSavedCard])
 
   return (
