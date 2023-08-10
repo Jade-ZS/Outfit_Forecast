@@ -17,9 +17,11 @@ export default function Forecast({forecast}) {
           let maxTemp = Math.round(item.main.temp_max);
 
           const convertTemp = temp => {
-            let output;
-            unit === 'C' ? output = temp : CtoF(temp);
-            return output;
+            if (unit === 'C') {
+              return temp;
+            } else {
+              return CtoF(temp);
+            }
           };
 
           return (
