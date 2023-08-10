@@ -10,6 +10,12 @@
   gap: 10vh;
 }
 
+.time-container {
+  background: rgba(251, 248, 248, 0.363);
+  padding: 2vw;
+  border-radius: 10px;
+}
+
 /* .result-container {
   height: 70vh;
   width: 70vw;
