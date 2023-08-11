@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
 
+
 export default function Home({checkErr}) {
   const handleClose = () => setClose(true);
   const submitRef = useRef();
@@ -14,7 +15,7 @@ export default function Home({checkErr}) {
   const [keyword, setKeyword] = useState('');
   const [isValid, setIsValid] = useState(true);
   const [weather, setWeather] = useState();
-  const [forecasat, setforecast] = useState({});
+  const [forecast, setForecast] = useState({});
   const [close, setClose] = useState(true);
   const [message, setMessage] = useState('');
 
@@ -59,6 +60,18 @@ export default function Home({checkErr}) {
     }
   }
 
+  const getForecast = async geocode => {
+    try {
+      if(geocode !== 'invalid address!') {
+        const { lat, lng } = geocode;
+        const forecast = await fetchForecast(lat, lng);
+        return forecast;
+      }
+    } catch {
+      checkErr(true);
+    }
+  }
+
   const handleSubmit = async () => {
     if(!keyword.length) {
       setAlertBox('This field is required');
@@ -66,7 +79,9 @@ export default function Home({checkErr}) {
       setIsLoading(true)
       const geocode = await getGeocode(keyword);
       const weather = await getWeather(geocode);
+      const forecast = await getForecast(geocode);
       setWeather(weather);
+      setForecast(forecast);
       setIsLoading(false);
     }
   }
@@ -79,10 +94,15 @@ export default function Home({checkErr}) {
     }
   }
 
+  const date = new Date;
+
   return(
     <div className='home-page'>
       <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
+      <div className='time-container'>
+        <p>{date.toUTCString().slice(5, 16)}</p>
+      </div>
       <div className='result-container'>
         {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${weather && 'hidden'}`}>
@@ -90,7 +110,7 @@ export default function Home({checkErr}) {
           <p>Let's explore weather!</p>
         </div>
         }
-        {isValid && <Result isSingleView={false} result={weather}/>}
+        {isValid && <Result forecast={forecast} isSingleView={false} weather={weather} />}
       </div>
     </div>
   );
