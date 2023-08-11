@@ -1,17 +1,3 @@
-.city {
-  width: 30vw;
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 20px;
-  background: rgba(250, 250, 250, 0.85);
-  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
-  padding: 2rem 8%;
-  margin-left: 2rem;
-}
 
 .city p {
   text-transform: uppercase;
@@ -52,4 +38,61 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.weather-card {
+  background-color: transparent;
+  width: 30vw;
+  height: 40vh;
+  padding: 5% 8%;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  /* transform-origin: center; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5% 8%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.weather-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  margin-top: -30px;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(250, 250, 250, 0.85);
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+  padding: 5% 8%;
+  /* margin-left: 2rem; */
+}
+
+.front {
+  background-color: #bbb;
+  color: black;
+  right: 1vw;
+}
+
+.back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
 }
