@@ -4,15 +4,7 @@ import { UnitContext } from '../../UnitContext';
 import { useContext } from 'react';
 
 export default function WeatherCard({weather}) {
-  const { unit, CtoF } = useContext(UnitContext);
-
-  const getTemp = () => {
-    if (unit === 'F') {
-      return CtoF(weather.main.temp);
-    } else {
-      return weather.main.temp;
-    }
-  }
+  const { unit, convertTemp } = useContext(UnitContext);
 
   return (
     <div className='weather-card'>
@@ -22,7 +14,7 @@ export default function WeatherCard({weather}) {
           <sup>{weather.sys.country}</sup>
         </div>
         <div className='city-temp'>
-          {Math.round(getTemp())}
+          {convertTemp(weather.main.temp)}
           <sup>&deg;{`${unit}`}</sup>
         </div>
         <div className='info'>

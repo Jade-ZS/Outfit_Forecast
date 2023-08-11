@@ -13,6 +13,13 @@ function App() {
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
+  const convertTemp = temp => {
+    if (unit === 'C') {
+      return Math.round(temp);
+    } else {
+      return Math.round(CtoF(temp));
+    }
+  };
   const addSave = location => setSaves([...saves, location]);
   const deleteSave = location => {
     const updatedSaves = saves.filter(element => JSON.stringify(element) !== JSON.stringify(location))
@@ -39,7 +46,7 @@ function App() {
   return (
     <div>
       <SaveContext.Provider value={{saves, addSave, deleteSave}}>
-        <UnitContext.Provider value={{unit, CtoF}}>
+        <UnitContext.Provider value={{unit, CtoF, convertTemp}}>
           <header>
             <p>Outfit Forecast</p>
           </header>

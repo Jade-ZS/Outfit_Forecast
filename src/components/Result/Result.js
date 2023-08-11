@@ -39,6 +39,7 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
 
         <div className='result-display'>
           <div className='result-line'>
+            {console.log('Result weather: ', weather)}
             <WeatherCard weather={weather}/>
             <img 
               className='cloth-img' 
