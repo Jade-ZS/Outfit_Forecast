@@ -6,9 +6,6 @@ import WeatherDetails from '../WeatherDetails/WeatherDetails';
 
 export default function WeatherCard({weather}) {
   const { unit, convertTemp } = useContext(UnitContext);
-  const [ flip, setFlip ] = useState(false);
-
-  const handleClick = () => setFlip(!flip);
 
   const front = (
     <div className='front city'>
@@ -32,8 +29,6 @@ export default function WeatherCard({weather}) {
       <WeatherDetails item={weather}/>
     </div>
   );
-
-
 
   return (
     <div className={`weather-card`}>

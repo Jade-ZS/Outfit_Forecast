@@ -80,13 +80,11 @@
 }
 
 .front {
-  background-color: #bbb;
+  background-color: #ffffff;
   color: black;
   right: 1vw;
 }
 
 .back {
-  background-color: dodgerblue;
-  color: white;
   transform: rotateY(180deg);
 }
