@@ -1,6 +1,6 @@
 html {
   background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, #94bbe9 100%);
+  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
   background-size: 400% 500%;
   animation: background-animation 20s ease-in-out infinite;
 }

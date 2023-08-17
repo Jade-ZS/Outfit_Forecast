@@ -7,49 +7,33 @@ import Saves from '../Saves/Saves';
 import SingleView from '../SingleView/SingleView';
 import { SaveContext } from '../../SaveContext';
 import { UnitContext } from '../../UnitContext';
+import Header from '../Header/Header';
 
 function App() {
   const CtoF = temp => Math.round(temp * (9/5) + 32);
   const [fetchErr, setFetchErr] = useState(false);
   const [saves, setSaves] = useState([]);
   const [unit, setUnit] = useState('C');
+  const convertTemp = temp => {
+    if (unit === 'C') {
+      return Math.round(temp);
+    } else {
+      return Math.round(CtoF(temp));
+    }
+  };
   const addSave = location => setSaves([...saves, location]);
   const deleteSave = location => {
     const updatedSaves = saves.filter(element => JSON.stringify(element) !== JSON.stringify(location))
     setSaves(updatedSaves);
   };
-  const [currentLat, setCurrentLat] = useState('');
-  const [currentLng, setCurrentLng] = useState('');
-  const getCurrentLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setCurrentLat(position.coords.latitude);
-        setCurrentLng(position.coords.longitude);
-      }, e => {
-        console.log(e)
-      })
-    }
-  }
-
-  useEffect(() => {
-    getCurrentLocation();
-  }, [])
  
-
   return (
     <div>
       <SaveContext.Provider value={{saves, addSave, deleteSave}}>
-        <UnitContext.Provider value={{unit, CtoF}}>
-          <header>
-            <p>Outfit Forecast</p>
-          </header>
-          <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
-          <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
-          <button onClick={getCurrentLocation}>location</button>
-          <p>lat: {currentLat}</p>
-          <p>lng: {currentLng}</p>
+        <UnitContext.Provider value={{unit, setUnit, CtoF, convertTemp}}>
+          <Header />
             <Routes>
-              <Route path='/' element={<Home checkErr={setFetchErr} currentLat={currentLat} currentLng={currentLng}/>} />
+              <Route path='/' element={<Home checkErr={setFetchErr} />} />
               <Route path='/Result' element={fetchErr ? <NotFound /> : <Home checkErr={setFetchErr} />} />
               <Route path='/saved'>
                 <Route index element={<Saves />}/>

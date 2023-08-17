@@ -1,18 +1,3 @@
-.city {
-  width: 30vw;
-  height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 20px;
-  background: rgba(250, 250, 250, 0.85);
-  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
-  padding: 2rem 8%;
-  margin-left: 2rem;
-}
-
 .city p {
   text-transform: uppercase;
   letter-spacing: 0.05vw;
@@ -52,4 +37,54 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.weather-card {
+  background-color: transparent;
+  width: 30vw;
+  height: 40vh;
+  padding: 5% 8%;
+  perspective: 1000px; 
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5% 8%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.weather-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  margin-top: -30px;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(250, 250, 250, 0.85);
+  box-shadow: 10px 10px 5px 0px rgba(15, 15, 15, 0.404);
+  padding: 5% 8%;
+}
+
+.front {
+  background-color: #ffffff;
+  color: black;
+  right: 1vw;
+}
+
+.back {
+  transform: rotateY(180deg);
 }

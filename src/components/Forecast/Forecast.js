@@ -2,9 +2,10 @@ import './Forecast.css';
 import { useContext } from 'react';
 import { Accordion, AccordionItemHeading, AccordionItem, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion';
 import { UnitContext } from '../../UnitContext';
+import WeatherDetails from '../WeatherDetails/WeatherDetails';
 
 export default function Forecast({forecast}) {
-  const { unit, CtoF } = useContext(UnitContext);
+  const { unit, convertTemp } = useContext(UnitContext);
   const dayInWeek = new Date().getDay();
   const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const following7Days = [...weekdays.slice(dayInWeek, 7), ...weekdays.slice(0, dayInWeek)];
@@ -15,17 +16,9 @@ export default function Forecast({forecast}) {
       <label>Weather in Future 7 Days</label>
       <Accordion allowZeroExpanded allowMultipleExpanded>
         {forecast.list.slice(0, 7).map((item, index) => {
-          let minTemp = Math.round(item.main.temp_min);
-          let maxTemp = Math.round(item.main.temp_max);
-          let feelTemp = Math.round(item.main.feels_like);
-
-          const convertTemp = temp => {
-            if (unit === 'C') {
-              return temp;
-            } else {
-              return CtoF(temp);
-            }
-          };
+          let minTemp = item.main.temp_min;
+          let maxTemp = item.main.temp_max;
+          let feelTemp = item.main.feels_like;
 
           return (
             <AccordionItem key={index}>
@@ -46,32 +39,7 @@ export default function Forecast({forecast}) {
                 </AccordionItemButton>
               </AccordionItemHeading>
               <AccordionItemPanel>
-                <div className='daily-details-grid'>
-                  <div className='daily-details-grid-item'>
-                    <label>Pressure:</label>
-                    <label>{item.main.pressure} hPa</label>
-                  </div>
-                  <div className='daily-details-grid-item'>
-                    <label>Humidity:&nbsp;</label>
-                    <label>{item.main.humidity} %</label>
-                  </div>
-                  <div className='daily-details-grid-item'>
-                    <label>Clouds:&nbsp;</label>
-                    <label>{item.clouds.all} %</label>
-                  </div>
-                  <div className='daily-details-grid-item'>
-                    <label>Wind Speed:&nbsp;</label>
-                    <label>{item.wind.speed} m/s</label>
-                  </div>
-                  <div className='daily-details-grid-item'>
-                    <label>Sea Level:&nbsp;</label>
-                    <label>{item.main.sea_level} m</label>
-                  </div>
-                  <div className='daily-details-grid-item'>
-                    <label>Feels like:&nbsp;</label>
-                    <label>{convertTemp(feelTemp)} &deg;{unit}</label>
-                  </div>
-                </div>
+                <WeatherDetails item={item}/>
               </AccordionItemPanel>
             </AccordionItem>
           );
