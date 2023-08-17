@@ -41,12 +41,12 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
         <div className='result-display'>
           <div className='result-line'>
             <WeatherCard weather={weather}/>
-            <img 
+            {/* <img 
               className='cloth-img' 
               src={require('../../assets/autum-sweaters.JPG')} 
               alt='sweaters'
-            />
-            {/* <Clothes /> */}
+            /> */}
+            <Clothes />
           </div>
           <Forecast forecast={forecast}/>
         </div>

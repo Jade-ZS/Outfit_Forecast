@@ -3,13 +3,8 @@
   width: 40vw;
 }
 
-img {
-  height: 20vh;
-  border-radius: 20px;
-}
-
 .cloth-img {
-  height: 40vh;
+  height: 20vh;
   border-radius: 10%;
   margin-left: 10%;
   margin-right: 2em;
