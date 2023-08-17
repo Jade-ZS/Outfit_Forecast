@@ -12,8 +12,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; */
-  background: rgb(224,196,253);
-  background: linear-gradient(48deg, rgba(224,196,253,1) 0%, rgba(143,198,253,1) 100%);
+  background: rgb(183, 153, 215);
   width: 100vw;
   height: 5vh;
   margin-top: -10px;
