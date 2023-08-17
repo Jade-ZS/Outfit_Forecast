@@ -5,6 +5,7 @@ import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 import Forecast from '../Forecast/Forecast';
+import Clothes from '../Clothes/Clothes';
 
 export default function Result({forecast, isSingleView, weather, isLoadingSingle}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);
@@ -39,12 +40,13 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
 
         <div className='result-display'>
           <div className='result-line'>
-            {console.log('Result weather: ', weather)}
             <WeatherCard weather={weather}/>
             <img 
               className='cloth-img' 
               src={require('../../assets/autum-sweaters.JPG')} 
-              alt='sweaters'/>
+              alt='sweaters'
+            />
+            {/* <Clothes /> */}
           </div>
           <Forecast forecast={forecast}/>
         </div>

@@ -1,0 +1,17 @@
+.clothes-display {
+  display: flex;
+  width: 40vw;
+}
+
+img {
+  height: 20vh;
+  border-radius: 20px;
+}
+
+.cloth-img {
+  height: 40vh;
+  border-radius: 10%;
+  margin-left: 10%;
+  margin-right: 2em;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
