@@ -23,10 +23,13 @@ export default function Clothes({weather}) {
     {
       key: uuidv4(),
       content: (
-        <div>
-          <a href={cloth[key].url}>
+        <div className='cloth-card'>
+          {/* <a href={cloth[key].url}> */}
             <img className='cloth-img' src={cloth[key].img} />
-          </a>
+            <div className='middle'>
+              <button>hihihihi</button>
+            </div>
+          {/* </a> */}
         </div>
       )
     }
@@ -34,9 +37,6 @@ export default function Clothes({weather}) {
   );
 
   return (
-    // <div className='clothes-display'>
-    //   {clothDisplay}
-    // </div>
     <SlideBar
       cards={clothDisplay}
       height="500px"
