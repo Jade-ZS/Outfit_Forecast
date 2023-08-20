@@ -46,7 +46,7 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
               src={require('../../assets/autum-sweaters.JPG')} 
               alt='sweaters'
             /> */}
-            <Clothes />
+            <Clothes weather={weather}/>
           </div>
           <Forecast forecast={forecast}/>
         </div>
