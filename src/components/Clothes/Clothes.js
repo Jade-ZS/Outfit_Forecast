@@ -24,12 +24,12 @@ export default function Clothes({weather}) {
       key: uuidv4(),
       content: (
         <div className='cloth-card'>
-          {/* <a href={cloth[key].url}> */}
             <img className='cloth-img' src={cloth[key].img} />
             <div className='middle'>
-              <button>hihihihi</button>
+              <a href={cloth[key].url}>
+                <button>View Details</button>
+              </a>
             </div>
-          {/* </a> */}
         </div>
       )
     }
