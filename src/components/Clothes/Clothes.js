@@ -1,5 +1,7 @@
 import './Clothes.css';
 import clothes from '../../clothData';
+import { v4 as uuidv4 } from "uuid";
+import SlideBar from '../SlideBar/SlideBar';
 
 export default function Clothes({weather}) {
   
@@ -17,17 +19,31 @@ export default function Clothes({weather}) {
   };
   const cloth = getClothes(temp);
   const clothKeys = Object.keys(cloth);
-  const clothDisplay = clothKeys.map(key => 
-    <div>
-      <a href={cloth[key].url}>
-        <img className='cloth-img' src={cloth[key].img} />
-      </a>
-    </div>
+  const clothDisplay = clothKeys.map(key => (
+    {
+      key: uuidv4(),
+      content: (
+        <div>
+          <a href={cloth[key].url}>
+            <img className='cloth-img' src={cloth[key].img} />
+          </a>
+        </div>
+      )
+    }
+  )
   );
 
   return (
-    <div className='clothes-display'>
-      {clothDisplay}
-    </div>
+    // <div className='clothes-display'>
+    //   {clothDisplay}
+    // </div>
+    <SlideBar
+      cards={clothDisplay}
+      height="500px"
+      width="30%"
+      margin="0 auto"
+      offset={2}
+      showArrows={false}
+    />
   )
 }
