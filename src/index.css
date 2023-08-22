@@ -89,11 +89,15 @@ a {
     width: 80vw !important;
   }
 
+  .result-line {
+    flex-direction: column;
+  }
+
   .result-display {
     flex-direction: column;
   }
 
-  .city {
+  .front, .back {
     margin-top: 3vh;
     margin-left: 0 !important;
     height: 20vh !important;
