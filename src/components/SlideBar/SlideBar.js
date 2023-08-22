@@ -2,21 +2,17 @@ import './SlideBar.css';
 import Carousel from "react-spring-3d-carousel";
 import { useState, useEffect } from "react";
 import { config } from "react-spring";
+import PropTypes from 'prop-types';
 
-export default function SlideBar(props) {
-  const table = props.cards.map((element, index) => {
+export default function SlideBar({clothes}) {
+  const table = clothes.map((element, index) => {
     return { ...element, onClick: () => setGoToSlide(index) };
   });
 
-  const [offsetRadius, setOffsetRadius] = useState(2);
-  const [showArrows, setShowArrows] = useState(false);
+  const [offsetRadius] = useState(2);
+  const [showArrows] = useState(false);
   const [goToSlide, setGoToSlide] = useState(null);
   const [cards] = useState(table);
-
-  useEffect(() => {
-    setOffsetRadius(props.offset);
-    setShowArrows(props.showArrows);
-  }, [props.offset, props.showArrows]);
 
   return (
     <div className='slide-bar'>
@@ -29,4 +25,8 @@ export default function SlideBar(props) {
       />
     </div>
   )
+}
+
+SlideBar.propTypes = {
+  clothes: PropTypes.array,
 }

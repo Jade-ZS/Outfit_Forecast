@@ -39,9 +39,8 @@ export default function Clothes({weather}) {
 
   return (
     <SlideBar
-      cards={clothDisplay}
+      clothes={clothDisplay}
       offset={2}
-      showArrows={false}
     />
   )
 }
