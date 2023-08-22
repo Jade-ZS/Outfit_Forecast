@@ -39,9 +39,9 @@ export default function Clothes({weather}) {
   return (
     <SlideBar
       cards={clothDisplay}
-      height="500px"
-      width="30%"
-      margin="0 auto"
+      // height="500px"
+      // width="30%"
+      // margin="0 auto"
       offset={2}
       showArrows={false}
     />

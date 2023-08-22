@@ -1,3 +1,4 @@
+import './SlideBar.css';
 import Carousel from "react-spring-3d-carousel";
 import { useState, useEffect } from "react";
 import { config } from "react-spring";
@@ -18,16 +19,17 @@ export default function SlideBar(props) {
   }, [props.offset, props.showArrows]);
 
   return (
-    <div
-    style={{ width: props.width, height: props.height, margin: props.margin }}
-  >
-    <Carousel
-      slides={cards}
-      goToSlide={goToSlide}
-      offsetRadius={offsetRadius}
-      showNavigation={showArrows}
-      animationConfig={config.gentle}
-    />
-  </div>
+    <div 
+    className='slide-bar'
+    // style={{ width: props.width, height: props.height, margin: props.margin }}
+    >
+      <Carousel
+        slides={cards}
+        goToSlide={goToSlide}
+        offsetRadius={offsetRadius}
+        showNavigation={showArrows}
+        animationConfig={config.gentle}
+      />
+    </div>
   )
 }

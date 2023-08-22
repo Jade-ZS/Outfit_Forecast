@@ -90,28 +90,99 @@ a {
   }
 
   .result-line {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .result-line:nth-child(2) {
+    height: 10px !important;
   }
 
   .result-display {
+    display: flex;
     flex-direction: column;
+  }
+
+  .weather-card {
+    /* order: 2 !important; */
+    margin-right: 0 !important;
+    
+    /* margin-left: 50%; */
+  }
+
+  .flip-card-inner {
+    padding: 50% 40% !important;
+  }
+
+  .single-view .flip-card-inner {
+    padding: 50% 30% !important;
+  }
+
+  .slide-bar {
+    /* order: 1 !important; */
+    height: 10vh !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .front, .back {
     margin-top: 3vh;
     margin-left: 0 !important;
-    height: 20vh !important;
+    height: 30vh !important;
     padding: 0 !important;
     width: 50vw !important;
+  }
+
+  .daily-item {
+    width: 80vw;
+  }
+
+  .single-view .daily-item {
+    width: 70vw;
+  }
+
+  .city-name,
+  .city-temp{
+    font-size: 1rem !important;
+  }
+
+  .city-name sup {
+    font-size: 0.8rem !important;
+  }
+
+  .city-temp sup,
+  .city p {
+    font-size: 0.5rem !important;
   }
 
   .city-icon {
     height: 10vh !important;
   }
 
-  .cloth-img {
-    height: 30vh !important;
-    margin-top: 3vh;
+  .cloth-img,
+  .single-view .cloth-img {
+    /* height: 30vh !important; */
+    height: auto !important;
+    width: 40vw !important;
+    margin-top: 15rem;
+    /* margin-bottom: 20vh !important; */
+  }
+
+  .cloth-card button {
+    margin-top: 18rem !important;
+  }
+
+  .forecast-container {
+    margin-top: 25rem !important;
+  }
+
+  .single-view .forecast-container {
+    margin-top: 12rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .empty-saves-message {
