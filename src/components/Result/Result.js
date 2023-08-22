@@ -1,43 +1,47 @@
-import './Result.css';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import PropTypes from 'prop-types'; 
-import Forecast from '../Forecast/Forecast';
-import Clothes from '../Clothes/Clothes';
-import SaveButton from '../SaveButton/SaveButton';
+import "./Result.css";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import PropTypes from "prop-types";
+import Forecast from "../Forecast/Forecast";
+import Clothes from "../Clothes/Clothes";
+import SaveButton from "../SaveButton/SaveButton";
 
-export default function Result({forecast, isSingleView, weather, isLoadingSingle}) {
-
+export default function Result({
+  forecast,
+  isSingleView,
+  weather,
+  isLoadingSingle,
+}) {
   let location = weather && {
-    ...weather.coord, 
-    name:weather.name, 
-    country:weather.sys.country, 
-    id:weather.name+weather.sys.country
+    ...weather.coord,
+    name: weather.name,
+    country: weather.sys.country,
+    id: weather.name + weather.sys.country,
   };
 
   return (
     <>
-      <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
-        {weather && 
-        <>
-          <SaveButton isSingleView={isSingleView} location={location}/>
+      <div className={`result-card ${isLoadingSingle && "hidden"}`}>
+        {weather && (
+          <>
+            <SaveButton isSingleView={isSingleView} location={location} />
 
-          <div className='result-display'>
-            <div className='result-line'>
-              <WeatherCard weather={weather}/>
-              <Clothes weather={weather}/>
+            <div className="result-display">
+              <div className="result-line">
+                <WeatherCard weather={weather} />
+                <Clothes weather={weather} />
+              </div>
+              <Forecast forecast={forecast} />
             </div>
-            <Forecast forecast={forecast}/>
-          </div>
-        </>
-        }
+          </>
+        )}
       </div>
     </>
-  )
+  );
 }
 
 Result.propTypes = {
   isSingleView: PropTypes.bool,
-  forecast: PropTypes.object, 
-  weather: PropTypes.object, 
-  isLoadingSingle: PropTypes.bool
-}
+  forecast: PropTypes.object,
+  weather: PropTypes.object,
+  isLoadingSingle: PropTypes.bool,
+};

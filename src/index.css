@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap');
 
 html {
-  background: rgb(238,174,202);
+  background: rgb(238, 174, 202);
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
   background-size: 400% 500%;
   animation: background-animation 20s ease-in-out infinite;
 }
 
 a {
-  color: inherit; 
-  text-decoration: inherit; 
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .home-button {
@@ -22,30 +22,32 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width:calc(100vh / 8);
-  height:calc(100vh / 8);
+  width: calc(100vh / 8);
+  height: calc(100vh / 8);
   margin-left: 3vw;
   border-radius: 50%;
   background: #94bbe9;
-  box-shadow:  9px 9px 18px #81a3cb,
-              -9px -9px 18px #a7d3ff;
+  box-shadow: 9px 9px 18px #81a3cb,
+    -9px -9px 18px #a7d3ff;
 }
 
 .home-button:hover {
   border-radius: 125px;
   background: #c781a0;
   background: #94bbe9;
-  box-shadow:  inset 9px 9px 18px #81a3cb,
-              inset -9px -9px 18px #a7d3ff;
+  box-shadow: inset 9px 9px 18px #81a3cb,
+    inset -9px -9px 18px #a7d3ff;
 }
 
 @keyframes background-animation {
   0% {
     background-position: 0%;
   }
+
   50% {
     background-position: 100%;
   }
+
   100% {
     background-position: 0%;
   }
@@ -63,7 +65,7 @@ a {
   .search-container {
     flex-direction: column;
   }
-  
+
   .search-input {
     width: 60vw !important;
   }
@@ -123,7 +125,8 @@ a {
     margin-bottom: 1rem !important;
   }
 
-  .front, .back {
+  .front,
+  .back {
     margin-top: 3vh;
     margin-left: 0 !important;
     height: 30vh !important;
@@ -140,7 +143,7 @@ a {
   }
 
   .city-name,
-  .city-temp{
+  .city-temp {
     font-size: 1rem !important;
   }
 
@@ -184,7 +187,7 @@ a {
     width: 80vw !important;
     margin-left: 8% !important;
   }
-  
+
   .savedCards {
     flex-direction: column;
     margin-top: 2rem !important;
