@@ -2,11 +2,32 @@
   border-radius: 20px;
   height: auto;
   margin: 2rem;
-  padding: 3%;
+  padding: 5%;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(231, 227, 231, 0.681);
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
+.single-view .result-display {
+  display: flex;
+  align-items: center;
+}
+
+.single-view .result-line {
+  flex-direction: column;
+}
+
+.single-view .weather-card {
+  margin: 0 10vw;
+}
+
+.single-view .cloth-img {
+  margin-top: 13vh;
+}
+
+
+
 

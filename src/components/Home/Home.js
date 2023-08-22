@@ -4,7 +4,6 @@ import AlertBox from '../AlertBox/AlertBox';
 import { fetchGeocode, fetchWeather, fetchForecast } from '../../apiCalls';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SearchBar from '../SearchBar/SearchBar';
 
 
@@ -94,23 +93,16 @@ export default function Home({checkErr}) {
     }
   }
 
-  const date = new Date;
-
   return(
     <div className='home-page'>
       <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
-      <div className='time-container'>
-        <p>{date.toUTCString().slice(5, 16)}</p>
-      </div>
       <div className='result-container'>
-        {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${weather && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
-        }
-        {isValid && <Result forecast={forecast} isSingleView={false} weather={weather} />}
+        {isValid && <Result isLoading={isLoading} forecast={forecast} isSingleView={false} weather={weather} />}
       </div>
     </div>
   );

@@ -4,25 +4,32 @@
 }
 
 header {
-  z-index: 2;
+  z-index: 3;
   position: fixed;
+  top: 0;
   display: flex;
-  /* background: #ffffff;
-  background-image: url('https://images.unsplash.com/photo-1496450681664-3df85efbd29f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHdlYXRoZXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; */
-  background: rgb(224,196,253);
-  background: linear-gradient(48deg, rgba(224,196,253,1) 0%, rgba(143,198,253,1) 100%);
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(183, 153, 215);
   width: 100vw;
-  height: 5vh;
+  height: 3rem;
   margin-top: -10px;
   margin-left: -10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 header p {
-  margin: 0;
+  margin: 0 1vw;
   padding-left: 10px;
   padding-top: 10px;
+}
+
+header button {
+  margin-top: 1.5vh;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  font-family: 'Dancing Script', cursive;
 }

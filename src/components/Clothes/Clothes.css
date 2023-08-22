@@ -1,0 +1,44 @@
+.clothes-display {
+  display: flex;
+  width: 100vw;
+}
+
+.cloth-img {
+  /* height: 40vh; */
+  width: 20vw;
+  border-radius: 10%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.cloth-card {
+  position: relative;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.cloth-card:hover .cloth-img {
+  filter: brightness(50%);
+}
+
+.cloth-card:hover .middle {
+  opacity: 1;
+}
+
+.cloth-card button {
+  background-color: #04AA6D;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.8rem;
+  margin-top: 8vh;
+}
+
