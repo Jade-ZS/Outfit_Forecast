@@ -31,4 +31,5 @@ header button {
 .left {
   display: flex;
   align-items: center;
+  font-family: 'Dancing Script', cursive;
 }

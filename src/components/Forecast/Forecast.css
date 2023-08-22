@@ -1,6 +1,7 @@
 .forecast-container {
   margin-bottom: 10vh;
   width: 60vw;
+  margin-top: 3vh;
 }
 
 .daily-item {
@@ -32,5 +33,9 @@
   width: 10vw;
   text-align: right;
   margin-right: 3vw;
+}
+
+.forecast-heading {
+  font-family: 'Dancing Script', cursive;
 }
 

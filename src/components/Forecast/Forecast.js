@@ -12,8 +12,7 @@ export default function Forecast({forecast}) {
 
   return (
     <div className='forecast-container'>
-      <p>Daily Forecast</p>
-      <label>Weather in Future 7 Days</label>
+      <label className='forecast-heading'>Weather in Future 7 Days</label>
       <Accordion allowZeroExpanded allowMultipleExpanded>
         {forecast.list.slice(0, 7).map((item, index) => {
           let minTemp = item.main.temp_min;
