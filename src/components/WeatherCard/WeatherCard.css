@@ -41,10 +41,11 @@
 
 .weather-card {
   background-color: transparent;
-  width: 30vw;
+  width: 20vw;
   height: 40vh;
   padding: 5% 8%;
   perspective: 1000px; 
+  margin-right: 10vw;
 }
 
 .flip-card-inner {
