@@ -1,6 +1,6 @@
 import './SlideBar.css';
 import Carousel from "react-spring-3d-carousel";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { config } from "react-spring";
 import PropTypes from 'prop-types';
 
