@@ -10,3 +10,19 @@
   border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
+.single-view .result-display {
+  display: flex;
+  align-items: center;
+}
+
+.single-view .result-line {
+  flex-direction: column;
+}
+
+.single-view .weather-card {
+  margin: 0 10vw;
+}
+
+
+
+
