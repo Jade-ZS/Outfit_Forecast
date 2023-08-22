@@ -11,6 +11,10 @@ a {
 }
 
 .home-button {
+  margin-top: 100px;
+}
+
+.home-button {
   font-weight: 900;
   display: flex;
   flex-direction: column;

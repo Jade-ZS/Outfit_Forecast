@@ -94,15 +94,10 @@ export default function Home({checkErr}) {
     }
   }
 
-  const date = new Date;
-
   return(
     <div className='home-page'>
       <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
-      <div className='time-container'>
-        <p>{date.toUTCString().slice(5, 16)}</p>
-      </div>
       <div className='result-container'>
         {isLoading ? <LoadingSpinner /> :
         <div className={`welcome  ${weather && 'hidden'}`}>
