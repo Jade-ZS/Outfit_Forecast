@@ -15,7 +15,7 @@ export default function Saves() {
         </div>
       </Link>
     )
-  })
+  });
 
   return (
     <div className='saves'>
@@ -24,5 +24,5 @@ export default function Saves() {
       </Link>
       {saves.length ? <div className='savedCards'>{savedCards}</div> : <p className='empty-saves-message'>You haven't saved any location yet.</p>}
     </div>
-  )
+  );
 }

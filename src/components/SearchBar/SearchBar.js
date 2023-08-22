@@ -27,5 +27,5 @@ export default function SearchBar({close, keyword, handleChange, handleKeyDown, 
           </Link>
         </div>
     </div>
-  )
+  );
 }

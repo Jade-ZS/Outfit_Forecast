@@ -13,11 +13,11 @@ export default function SingleView() {
   const [weather, setWeather] = useState('');
   const [forecast, setForecast] = useState();
   const selectedSavedCard = saves.filter(element => element.id === id)[0];
-  const [isLoadingSingle, setIsLoadingSingle] = useState(false)
+  const [isLoadingSingle, setIsLoadingSingle] = useState(false);
   
   const parseName = id => {
     return id.slice(0, id.length-2);
-  }
+  };
 
   useEffect(() => {
     setIsLoadingSingle(true);
@@ -33,15 +33,15 @@ export default function SingleView() {
         setForecast(data[1])
       })
       .catch(() => navigate('/*'))
-  }, [selectedSavedCard])
+  }, [selectedSavedCard]);
 
   return (
     <>
-        <div className='single-view'>
-         <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
-         {isLoadingSingle && <LoadingSpinner />}
-         <Result forecast={forecast} isSingleView={true} weather={weather} isLoadingSingle={isLoadingSingle}/>
-        </div> 
+      <div className='single-view'>
+        <Link to='/'><img className='home-button' alt='home button' src={require('../../assets/home-icon.png')}/></Link>
+        {isLoadingSingle && <LoadingSpinner />}
+        <Result forecast={forecast} isSingleView={true} weather={weather} isLoadingSingle={isLoadingSingle}/>
+      </div> 
     </>
-  )
+  );
 }

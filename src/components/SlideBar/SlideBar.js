@@ -19,10 +19,7 @@ export default function SlideBar(props) {
   }, [props.offset, props.showArrows]);
 
   return (
-    <div 
-    className='slide-bar'
-    // style={{ width: props.width, height: props.height, margin: props.margin }}
-    >
+    <div className='slide-bar'>
       <Carousel
         slides={cards}
         goToSlide={goToSlide}

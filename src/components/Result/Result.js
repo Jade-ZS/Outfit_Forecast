@@ -1,8 +1,5 @@
 import './Result.css';
 import WeatherCard from '../WeatherCard/WeatherCard';
-import { SaveContext } from '../../SaveContext';
-import { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 import Forecast from '../Forecast/Forecast';
 import Clothes from '../Clothes/Clothes';
