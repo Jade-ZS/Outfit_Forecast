@@ -9,6 +9,10 @@
   gap: 10vh;
 }
 
+.home-page .button-wrapper {
+  justify-content: flex-start;
+}
+
 .time-container {
   background: rgba(251, 248, 248, 0.363);
   padding: 2vw;
@@ -27,5 +31,3 @@
 .welcome-rabbits {
   height: 60vh;
 }
-
-
