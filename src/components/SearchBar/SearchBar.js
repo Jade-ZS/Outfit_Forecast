@@ -30,3 +30,12 @@ export default function SearchBar({close, keyword, handleChange, handleKeyDown, 
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  close: PropTypes.bool,
+  keyword: PropTypes.string,
+  handleChange: PropTypes.func, 
+  handleKeyDown: PropTypes.func, 
+  handleSubmit: PropTypes.func, 
+  submitRef: PropTypes.func, 
+}

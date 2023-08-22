@@ -28,3 +28,8 @@ export default function SaveButton({isSingleView, location}) {
         </div>
   );
 }
+
+SaveButton.propTypes = {
+  isSingleView: PropTypes.bool,
+  location: PropTypes.object, 
+}
