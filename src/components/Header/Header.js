@@ -7,9 +7,12 @@ export default function Header() {
 
   return (
     <header>
-          <p>Outfit Forecast</p>
-          <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
-          <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
+      <div className='left'>
+        <p>Outfit Forecast</p>
+        <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
+        <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
+      </div>
+      <p></p>
     </header>
   )
 }
