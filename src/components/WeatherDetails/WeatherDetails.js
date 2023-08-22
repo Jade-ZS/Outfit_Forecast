@@ -36,3 +36,7 @@ export default function WeatherDetails({item}) {
     </div>
   );
 }
+
+WeatherDetails.propTypes = {
+  item: PropTypes.object
+}
