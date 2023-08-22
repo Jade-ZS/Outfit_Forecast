@@ -1,6 +1,7 @@
 import './WeatherDetails.css';
 import { useContext } from 'react';
 import { UnitContext } from '../../UnitContext';
+import PropTypes from 'prop-types'; 
 
 export default function WeatherDetails({item}) {
   const { unit, convertTemp } = useContext(UnitContext);

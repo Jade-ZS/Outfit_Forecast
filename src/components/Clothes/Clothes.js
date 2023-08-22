@@ -2,6 +2,7 @@ import './Clothes.css';
 import clothes from '../../clothData';
 import { v4 as uuidv4 } from "uuid";
 import SlideBar from '../SlideBar/SlideBar';
+import PropTypes from 'prop-types'; 
 
 export default function Clothes({weather}) {
   
@@ -44,3 +45,7 @@ export default function Clothes({weather}) {
     />
   )
 }
+
+Clothes.propTypes = {
+  weather: PropTypes.object
+};

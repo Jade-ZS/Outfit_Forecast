@@ -2,6 +2,7 @@ import './SaveButton.css';
 import { SaveContext } from '../../SaveContext';
 import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; 
 
 export default function SaveButton({isSingleView, location}) {
   const { saves, addSave, deleteSave } = useContext(SaveContext);

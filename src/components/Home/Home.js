@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar/SearchBar';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-
 export default function Home({checkErr}) {
   const handleClose = () => setClose(true);
   const submitRef = useRef();

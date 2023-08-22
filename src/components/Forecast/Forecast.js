@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Accordion, AccordionItemHeading, AccordionItem, AccordionItemButton, AccordionItemPanel } from 'react-accessible-accordion';
 import { UnitContext } from '../../UnitContext';
 import WeatherDetails from '../WeatherDetails/WeatherDetails';
+import PropTypes from 'prop-types'; 
 
 export default function Forecast({forecast}) {
   const { unit, convertTemp } = useContext(UnitContext);
@@ -47,3 +48,7 @@ export default function Forecast({forecast}) {
     </div>
   )
 }
+
+Forecast.propTypes = {
+  forecast: PropTypes.object
+};

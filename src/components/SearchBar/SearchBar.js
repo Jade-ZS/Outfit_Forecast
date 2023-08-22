@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './SearchBar.css';
+import PropTypes from 'prop-types'; 
 
 export default function SearchBar({close, keyword, handleChange, handleKeyDown, handleSubmit, submitRef}) {
   return (
