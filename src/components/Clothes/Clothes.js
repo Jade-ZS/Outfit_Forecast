@@ -25,7 +25,7 @@ export default function Clothes({weather}) {
       key: uuidv4(),
       content: (
         <div className='cloth-card'>
-            <img className='cloth-img' src={cloth[key].img} />
+            <img className='cloth-img' src={cloth[key].img} alt={key} />
             <div className='middle'>
               <a href={cloth[key].url}>
                 <button>View Details</button>

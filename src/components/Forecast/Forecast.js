@@ -18,7 +18,6 @@ export default function Forecast({forecast}) {
         {forecast.list.slice(0, 7).map((item, index) => {
           let minTemp = item.main.temp_min;
           let maxTemp = item.main.temp_max;
-          let feelTemp = item.main.feels_like;
 
           return (
             <AccordionItem key={index}>
@@ -33,7 +32,7 @@ export default function Forecast({forecast}) {
                     <label className='description'>{item.weather[0].description}&nbsp; </label>
                     <label className='min-max'>
                       {convertTemp(minTemp)}&deg;{unit} 
-                      {minTemp !== maxTemp && ` - ${convertTemp(maxTemp)}` + `\u{B0}${unit}`}
+                      {minTemp !== maxTemp && ` - ${convertTemp(maxTemp)} \u{B0}${unit}`}
                     </label>
                   </div>
                 </AccordionItemButton>

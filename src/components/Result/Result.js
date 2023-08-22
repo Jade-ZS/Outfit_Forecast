@@ -38,7 +38,6 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
 Result.propTypes = {
   isSingleView: PropTypes.bool,
   forecast: PropTypes.object, 
-  isSingleView: PropTypes.bool, 
   weather: PropTypes.object, 
   isLoadingSingle: PropTypes.bool
 }

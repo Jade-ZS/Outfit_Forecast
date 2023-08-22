@@ -101,7 +101,7 @@ export default function Home({checkErr}) {
         {isLoading ? <LoadingSpinner /> :
         <>
         <div className={`welcome  ${weather && 'hidden'}`}>
-          <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
+          <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')} alt='welcome'/>
           <p>Let's explore weather!</p>
         </div>
         {isValid && <Result forecast={forecast} isSingleView={false} weather={weather} />}

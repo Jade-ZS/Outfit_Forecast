@@ -8,7 +8,9 @@ export default function SearchBar({close, keyword, handleChange, handleKeyDown, 
       <Link to='/saved' onClick={e => {!close && e.preventDefault()}} >
         <img 
           className={`view-saved-button ${!close && 'noHover'}`}
-          src={require('../../assets/view-saved.png')}/>
+          src={require('../../assets/view-saved.png')}
+          alt='view-saved button'
+        />
       </Link>
         <div className='search-bar'>
           <input 

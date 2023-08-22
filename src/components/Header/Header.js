@@ -1,5 +1,5 @@
 import './Header.css';
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { UnitContext } from '../../UnitContext';
 import moment from 'moment';
 
