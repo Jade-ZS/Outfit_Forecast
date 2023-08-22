@@ -1,6 +1,7 @@
 import './Header.css';
 import { useContext, useState, useEffect } from 'react';
 import { UnitContext } from '../../UnitContext';
+import moment from 'moment';
 
 export default function Header() {
   const {unit, setUnit} = useContext(UnitContext);
@@ -12,7 +13,7 @@ export default function Header() {
         <button className={`f-button ${unit === 'F' && 'clicked'}`} onClick={() => setUnit('F')}>&deg;F</button>
         <button className={`c-button ${unit === 'C' && 'clicked'}`} onClick={() => setUnit('C')}>&deg;C</button>
       </div>
-      <p></p>
+      <p>{moment().format('MMMM D, YYYY 🕰️ H:mm')}</p>
     </header>
   )
 }
