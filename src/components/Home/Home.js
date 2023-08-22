@@ -105,7 +105,7 @@ export default function Home({checkErr}) {
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
-        {isValid && <Result isLoading={isLoading} forecast={forecast} isSingleView={false} weather={weather} />}
+        {isValid && <Result forecast={forecast} isSingleView={false} weather={weather} />}
         </>}
       </div>
     </div>
