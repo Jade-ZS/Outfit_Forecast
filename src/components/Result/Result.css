@@ -1,3 +1,9 @@
+.result-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -6,26 +12,16 @@
   margin-top: 2vh;
 }
 
-.result-line {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.close-button,
-.save-button {
+.close-button {
   height: 5vh;
   padding: 1vh;
   border-radius: 100%;
   background: white;
 }
 
-.save-button:hover {
-  background: rgba(255, 192, 203, 0.728);
-}
 
-.close-button:hover,
-.save-button.clicked {
+
+.close-button:hover {
   background: rgb(248, 74, 103);
 }
 

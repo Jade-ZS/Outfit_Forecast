@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 import Forecast from '../Forecast/Forecast';
 import Clothes from '../Clothes/Clothes';
 import SaveButton from '../SaveButton/SaveButton';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-export default function Result({forecast, isSingleView, weather, isLoadingSingle}) {
+export default function Result({isLoading, forecast, isSingleView, weather, isLoadingSingle}) {
 
   let location = weather && {
     ...weather.coord, 
@@ -18,21 +19,24 @@ export default function Result({forecast, isSingleView, weather, isLoadingSingle
   };
 
   return (
-    <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
-      {weather && 
-      <>
-        <SaveButton isSingleView={isSingleView} location={location}/>
+    <>
+    {isLoading ? <LoadingSpinner /> : 
+      <div className={`result-card ${isLoadingSingle && 'hidden'}`}>
+        {weather && 
+        <>
+          <SaveButton isSingleView={isSingleView} location={location}/>
 
-        <div className='result-display'>
-          <div className='result-line'>
-            <WeatherCard weather={weather}/>
-            <Clothes weather={weather}/>
+          <div className='result-display'>
+            <div className='result-line'>
+              <WeatherCard weather={weather}/>
+              <Clothes weather={weather}/>
+            </div>
+            <Forecast forecast={forecast}/>
           </div>
-          <Forecast forecast={forecast}/>
-        </div>
-      </>
-      }
-    </div>
+        </>
+        }
+      </div>}
+    </>
   )
 }
 

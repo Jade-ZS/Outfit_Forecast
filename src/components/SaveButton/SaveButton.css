@@ -1,0 +1,15 @@
+.save-button {
+  height: 5vh;
+  padding: 1vh;
+  border-radius: 100%;
+  background: white;
+}
+
+
+.save-button:hover {
+  background: rgba(255, 192, 203, 0.728);
+}
+
+.save-button.clicked {
+  background: rgb(248, 74, 103);
+}
