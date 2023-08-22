@@ -8,16 +8,27 @@ header {
   position: fixed;
   top: 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: rgb(183, 153, 215);
   width: 100vw;
-  height: 10vh;
+  height: 3rem;
   margin-top: -10px;
   margin-left: -10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 header p {
-  margin: 0;
+  margin: 0 1vw;
   padding-left: 10px;
   padding-top: 10px;
+}
+
+header button {
+  margin-top: 1.5vh;
+}
+
+.left {
+  display: flex;
+  align-items: center;
 }
