@@ -5,6 +5,7 @@ import { fetchGeocode, fetchWeather, fetchForecast } from '../../apiCalls';
 import Result from '../Result/Result';
 import PropTypes from 'prop-types'; 
 import SearchBar from '../SearchBar/SearchBar';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 
 export default function Home({checkErr}) {
@@ -98,11 +99,14 @@ export default function Home({checkErr}) {
       <SearchBar close={close} keyword={keyword} handleChange={handleChange} handleKeyDown={handleKeyDown} handleSubmit={handleSubmit} submitRef={submitRef}/>
       {!isValid && <AlertBox close={close} handleClose={handleClose} message={message}/>}
       <div className='result-container'>
+        {isLoading ? <LoadingSpinner /> :
+        <>
         <div className={`welcome  ${weather && 'hidden'}`}>
           <img className={`welcome-rabbits`} src={require('../../assets/welcome-rabbits.png')}/>
           <p>Let's explore weather!</p>
         </div>
         {isValid && <Result isLoading={isLoading} forecast={forecast} isSingleView={false} weather={weather} />}
+        </>}
       </div>
     </div>
   );
