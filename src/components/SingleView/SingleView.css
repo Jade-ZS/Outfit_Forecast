@@ -2,7 +2,7 @@
   border-radius: 20px;
   height: auto;
   margin: 2rem;
-  padding: 3%;
+  padding: 5%;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(231, 227, 231, 0.681);
