@@ -20,13 +20,7 @@ Outfit Forecast is a feature-rich web application built with React that empowers
 
 ## Preview
 
-- **General Feature** (Search, Save, and Unsave)
-
-  ![general feature](https://github.com/Jade-ZS/Outfit_Forecast/assets/123802263/d4caedfd-b561-40df-8ac5-5843664fb2a9)
-
-- **Sad Path** (Bad input and url handling)
-
-   ![sad path](https://github.com/Jade-ZS/Outfit_Forecast/assets/123802263/8ac13036-091e-4364-bfd8-98cbf8c34b24)
+  ![feature preview](https://user-images.githubusercontent.com/123802263/270138196-d16cf89d-c27a-42bd-98a0-6cc6fe8be580.gif)
 
 
 ## Deployment
