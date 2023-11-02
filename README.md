@@ -22,11 +22,6 @@ Outfit Forecast is a feature-rich web application built with React that empowers
 
   ![feature preview](https://user-images.githubusercontent.com/123802263/270138196-d16cf89d-c27a-42bd-98a0-6cc6fe8be580.gif)
 
-
-## Deployment
-
-The Outfit Forecast app is deployed using Vercel and is accessible at [https://outfit-forecast.vercel.app/](https://outfit-forecast.vercel.app/).
-
 ## Installation
 
 To run the Outfit Forecast app locally on your machine, follow these steps:
